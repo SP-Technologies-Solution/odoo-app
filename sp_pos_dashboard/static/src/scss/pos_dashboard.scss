@@ -1,0 +1,737 @@
+// ─────────────────────────────────────────────────────────────────────────────
+//  SP POS Dashboard — Odoo 18 Community-matched UI
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── Tokens ───────────────────────────────────────────────────────────────────
+$bg : #f5f6f8;
+$white : #ffffff;
+$border : #e4e7ec;
+$text : #1a1f36;
+$muted : #6b7280;
+$radius : 8px;
+$shadow : 0 1px 3px rgba(0, 0, 0, .08),
+0 1px 8px rgba(0, 0, 0, .04);
+$font : 'Lato',
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+sans-serif;
+
+// ── Shimmer ───────────────────────────────────────────────────────────────────
+@keyframes shimmer {
+    0% {
+        background-position: -600px 0;
+    }
+
+    100% {
+        background-position: 600px 0;
+    }
+}
+
+%shimmer {
+    background: linear-gradient(90deg, #eef0f3 25%, #e2e5ea 50%, #eef0f3 75%);
+    background-size: 1200px 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+}
+
+// ── Root ──────────────────────────────────────────────────────────────────────
+.sp-dashboard {
+    font-family: $font;
+    background: $bg;
+    min-height: calc(100vh - 46px);
+    padding: 20px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    color: $text;
+    font-size: 13px;
+}
+
+// ── Toolbar ───────────────────────────────────────────────────────────────────
+.sp-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sp-toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sp-toolbar-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(1, 126, 132, .12);
+    color: #017E84;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.sp-toolbar-title {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: $text;
+    line-height: 1.2;
+}
+
+.sp-toolbar-sub {
+    display: block;
+    font-size: 11px;
+    color: $muted;
+}
+
+.sp-toolbar-actions {
+    display: flex;
+    gap: 8px;
+}
+
+// ── Buttons ───────────────────────────────────────────────────────────────────
+.sp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all .15s;
+    font-family: $font;
+    white-space: nowrap;
+    line-height: 1;
+
+    &:active {
+        transform: translateY(1px);
+    }
+
+    &--outline {
+        background: $white;
+        border-color: $border;
+        color: $muted;
+
+        &:hover {
+            border-color: #9ca3af;
+            color: $text;
+        }
+    }
+
+    &--primary {
+        background: #017E84;
+        color: #fff;
+
+        &:hover {
+            background: #015f64;
+        }
+    }
+
+    &--success {
+        background: #198754;
+        color: #fff;
+
+        &:hover {
+            background: #146c43;
+        }
+    }
+
+    &--full {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+// ── Chart type toggle buttons ─────────────────────────────────────────────────
+.sp-toggle {
+    display: flex;
+    gap: 2px;
+    background: #f1f3f5;
+    border: 1px solid $border;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.sp-toggle-btn {
+    width: 28px;
+    height: 26px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: $muted;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: all .12s;
+
+    &:hover {
+        background: $white;
+        color: $text;
+    }
+
+    &--active {
+        background: $white;
+        color: #017E84;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+        font-weight: 600;
+    }
+}
+
+// ── Filter bar ────────────────────────────────────────────────────────────────
+.sp-filter-bar {
+    background: $white;
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 14px 18px;
+    box-shadow: $shadow;
+}
+
+.sp-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: flex-end;
+}
+
+.sp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 130px;
+
+    &--action {
+        flex: 0 0 auto;
+        min-width: 90px;
+    }
+}
+
+.sp-field-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: $muted;
+}
+
+.sp-input {
+    height: 34px;
+    border: 1px solid $border;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 13px;
+    color: $text;
+    background: $white;
+    font-family: $font;
+    cursor: pointer;
+    transition: border-color .15s, box-shadow .15s;
+    appearance: none;
+
+    &:focus {
+        outline: none;
+        border-color: #017E84;
+        box-shadow: 0 0 0 3px rgba(1, 126, 132, .15);
+    }
+}
+
+// ── KPI row ───────────────────────────────────────────────────────────────────
+.sp-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+// KpiCard component styles
+.sp-kpi-card {
+    background: $white;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    border: 1px solid $border;
+    overflow: hidden;
+    transition: box-shadow .2s, transform .2s;
+
+    &--clickable {
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+            transform: translateY(-2px);
+        }
+    }
+}
+
+.sp-kpi-accent {
+    height: 4px;
+    background: var(--sp-accent, #017E84);
+}
+
+.sp-kpi-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px 18px;
+}
+
+.sp-kpi-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .05);
+    color: var(--sp-accent, #017E84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.sp-kpi-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.sp-kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: $muted;
+    margin: 0 0 5px;
+}
+
+.sp-kpi-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: $text;
+    margin: 0 0 6px;
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sp-kpi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+
+    &--up {
+        background: rgba(25, 135, 84, .1);
+        color: #198754;
+    }
+
+    &--down {
+        background: rgba(220, 53, 69, .1);
+        color: #dc3545;
+    }
+
+    .sp-kpi-badge-sub {
+        font-weight: 400;
+        opacity: .75;
+    }
+}
+
+// ── Grid layouts ──────────────────────────────────────────────────────────────
+.sp-row {
+    display: grid;
+    gap: 16px;
+
+    &--7-5 {
+        grid-template-columns: 7fr 5fr;
+    }
+
+    &--6-6 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &--4-8 {
+        grid-template-columns: 4fr 8fr;
+    }
+}
+
+// ── Card ──────────────────────────────────────────────────────────────────────
+.sp-card {
+    background: $white;
+    border: 1px solid $border;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sp-card-hd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid $border;
+    gap: 10px;
+    min-height: 46px;
+}
+
+.sp-card-hd-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.sp-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.sp-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: $text;
+    white-space: nowrap;
+}
+
+.sp-period-badge {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(1, 126, 132, .1);
+    color: #017E84;
+}
+
+.sp-hint {
+    font-size: 11px;
+    color: $muted;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.sp-card-bd {
+    padding: 16px;
+    flex: 1;
+
+    &--split {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 0 0;
+
+        .sp-tbl {
+            margin: 0;
+        }
+    }
+}
+
+// ── Chart wrapper ─────────────────────────────────────────────────────────────
+.sp-chart-wrap {
+    position: relative;
+    width: 100%;
+
+    canvas {
+        display: block;
+    }
+}
+
+// ── Table ─────────────────────────────────────────────────────────────────────
+.sp-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+
+    thead tr {
+        background: #f9fafb;
+    }
+
+    th {
+        padding: 8px 14px;
+        font-size: 10.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .4px;
+        color: $muted;
+        border-bottom: 1px solid $border;
+        white-space: nowrap;
+
+        &.r {
+            text-align: right;
+        }
+
+        &.c {
+            text-align: center;
+        }
+    }
+
+    td {
+        padding: 8px 14px;
+        border-bottom: 1px solid rgba($border, .5);
+        vertical-align: middle;
+
+        &.r {
+            text-align: right;
+        }
+
+        &.c {
+            text-align: center;
+        }
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+}
+
+.sp-tbl-row {
+    cursor: pointer;
+
+    &:hover td,
+    &:hover {
+        background: rgba(1, 126, 132, .04) !important;
+    }
+}
+
+.sp-rank {
+    color: $muted;
+    font-size: 11px;
+    width: 28px;
+}
+
+.sp-name {
+    font-weight: 500;
+}
+
+.sp-bold {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.sp-muted {
+    color: $muted;
+}
+
+// ── Legend ────────────────────────────────────────────────────────────────────
+.sp-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 14px 14px;
+}
+
+.sp-legend-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12.5px;
+
+    .sp-name {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .sp-bold {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+}
+
+.sp-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+// ── Payment list ──────────────────────────────────────────────────────────────
+.sp-pay-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.sp-pay-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    background: #f9fafb;
+    font-size: 12.5px;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(1, 126, 132, .07);
+    }
+
+    .sp-name {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .sp-bold {
+        margin-left: auto;
+    }
+}
+
+// ── Skeletons ─────────────────────────────────────────────────────────────────
+.sp-skel {
+    @extend %shimmer;
+
+    &--chart {
+        height: 270px;
+        border-radius: $radius;
+    }
+
+    &--chart-sm {
+        height: 200px;
+        border-radius: $radius;
+    }
+
+    &--donut {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        margin: 10px auto;
+
+        &-sm {
+            width: 160px;
+            height: 160px;
+        }
+    }
+
+    &--row {
+        height: 13px;
+        border-radius: 3px;
+        margin: 2px 0;
+    }
+}
+
+// KpiCard skeleton helpers
+.sp-skeleton {
+    @extend %shimmer;
+
+    &--value {
+        height: 26px;
+        width: 65%;
+        border-radius: 4px;
+    }
+
+    &--badge {
+        height: 16px;
+        width: 48%;
+        border-radius: 20px;
+    }
+}
+
+// ── Empty state ───────────────────────────────────────────────────────────────
+.sp-empty {
+    text-align: center;
+    color: $muted;
+    font-size: 12px;
+    padding: 16px;
+    font-style: italic;
+}
+
+.sp-empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    border: 2px dashed $border;
+    border-radius: $radius;
+    background: #fafbfc;
+    color: $muted;
+
+    .sp-empty-icon {
+        font-size: 36px;
+        opacity: .25;
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    h5 {
+        color: $text;
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-size: 15px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+}
+
+// ── Footer credit ─────────────────────────────────────────────────────────────
+.sp-footer-credit {
+    text-align: center;
+    font-size: 11px;
+    color: $muted;
+    padding: 8px 0 4px;
+    letter-spacing: .3px;
+    font-weight: 700;
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: 1280px) {
+    .sp-row--7-5 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sp-kpi-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sp-row--6-6 {
+        grid-template-columns: 1fr;
+    }
+
+    .sp-row--4-8 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .sp-dashboard {
+        padding: 12px 12px 28px;
+    }
+
+    .sp-kpi-row {
+        grid-template-columns: 1fr;
+    }
+
+    .sp-filter-row {
+        flex-direction: column;
+    }
+
+    .sp-field {
+        min-width: 100%;
+    }
+
+    .sp-toolbar-actions .sp-btn span {
+        display: none;
+    }
+}

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<!-- ─────────────────────────────────────────────────────────────────────────
+     CHART-TYPE TOGGLE  (reusable sub-template)
+     attrs: section (String), types (Array<{key,icon,title}>)
+──────────────────────────────────────────────────────────────────────────── -->
+<t t-name="sp_pos_dashboard.ChartToggle" owl="1">
+    <div class="sp-toggle">
+        <t t-foreach="types" t-as="btn" t-key="btn.key">
+            <button
+                t-att-title="btn.title"
+                t-att-class="state.chartTypes[section] === btn.key
+                             ? 'sp-toggle-btn sp-toggle-btn--active'
+                             : 'sp-toggle-btn'"
+                t-on-click="() => this.setChartType(section, btn.key)">
+                <i class="fa" t-att-class="btn.icon"/>
+            </button>
+        </t>
+    </div>
+</t>
+
+
+<!-- ─────────────────────────────────────────────────────────────────────────
+     MAIN DASHBOARD
+──────────────────────────────────────────────────────────────────────────── -->
+<t t-name="sp_pos_dashboard.Dashboard" owl="1">
+<div class="sp-dashboard">
+
+    <!-- ══ Toolbar ════════════════════════════════════════════════════════ -->
+    <div class="sp-toolbar">
+        <div class="sp-toolbar-brand">
+            <div class="sp-toolbar-icon-wrap">
+                <i class="fa fa-tachometer"/>
+            </div>
+            <div>
+                <span class="sp-toolbar-title">POS Dashboard</span>
+                <span class="sp-toolbar-sub">Point of Sale Analytics</span>
+            </div>
+        </div>
+        <div class="sp-toolbar-actions">
+            <button class="sp-btn sp-btn--outline" t-on-click="onRefresh">
+                <i class="fa fa-refresh"/> Refresh
+            </button>
+            <button class="sp-btn sp-btn--success" t-on-click="onExportExcel">
+                <i class="fa fa-download"/> Export Excel
+            </button>
+        </div>
+    </div>
+
+    <!-- ══ Filter Bar ═════════════════════════════════════════════════════ -->
+    <div class="sp-filter-bar">
+        <div class="sp-filter-row">
+
+            <div class="sp-field">
+                <label class="sp-field-label">Date From</label>
+                <input type="date" class="sp-input"
+                       data-field="date_from"
+                       t-att-value="state.filters.date_from"
+                       t-on-change="onFilterChange"/>
+            </div>
+
+            <div class="sp-field">
+                <label class="sp-field-label">Date To</label>
+                <input type="date" class="sp-input"
+                       data-field="date_to"
+                       t-att-value="state.filters.date_to"
+                       t-on-change="onFilterChange"/>
+            </div>
+
+            <div class="sp-field">
+                <label class="sp-field-label">Period</label>
+                <select class="sp-input" data-field="period" t-on-change="onFilterChange">
+                    <option value="daily"     t-att-selected="state.filters.period === 'daily'">Daily</option>
+                    <option value="weekly"    t-att-selected="state.filters.period === 'weekly'">Weekly</option>
+                    <option value="monthly"   t-att-selected="state.filters.period === 'monthly'">Monthly</option>
+                    <option value="quarterly" t-att-selected="state.filters.period === 'quarterly'">Quarterly</option>
+                    <option value="yearly"    t-att-selected="state.filters.period === 'yearly'">Yearly</option>
+                </select>
+            </div>
+
+            <div class="sp-field">
+                <label class="sp-field-label">Company</label>
+                <select class="sp-input" data-field="company_id" t-on-change="onFilterChange">
+                    <option value="">All Companies</option>
+                    <t t-foreach="state.companies" t-as="co" t-key="co.id">
+                        <option t-att-value="co.id" t-att-selected="state.filters.company_id === co.id" t-esc="co.name"/>
+                    </t>
+                </select>
+            </div>
+
+            <div class="sp-field">
+                <label class="sp-field-label">POS Shop</label>
+                <select class="sp-input" data-field="config_id" t-on-change="onFilterChange">
+                    <option value="">All Shops</option>
+                    <t t-foreach="filteredConfigs" t-as="c" t-key="c.id">
+                        <option t-att-value="c.id" t-att-selected="state.filters.config_id === c.id" t-esc="c.name"/>
+                    </t>
+                </select>
+            </div>
+
+            <div class="sp-field">
+                <label class="sp-field-label">Session</label>
+                <select class="sp-input" data-field="session_id" t-on-change="onFilterChange">
+                    <option value="">All Sessions</option>
+                    <t t-foreach="filteredSessions" t-as="s" t-key="s.id">
+                        <option t-att-value="s.id" t-att-selected="state.filters.session_id === s.id" t-esc="s.name"/>
+                    </t>
+                </select>
+            </div>
+
+            <div class="sp-field sp-field--action">
+                <label class="sp-field-label">&#8203;</label>
+                <button class="sp-btn sp-btn--primary sp-btn--full" t-on-click="onApplyFilters">
+                    <i class="fa fa-filter"/> Apply
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ══ KPI Row ════════════════════════════════════════════════════════ -->
+    <div class="sp-kpi-row">
+        <KpiCard title="'Total Sales'"     value="state.kpis.total_sales"
+                 growth="state.kpis.sales_growth"   icon="'fa-money'"
+                 accentColor="'#017E84'" type="'currency'" loading="state.loading"
+                 currencySymbol="state.currency_symbol"
+                 currencyPosition="state.currency_position"/>
+
+        <KpiCard title="'Total Orders'"    value="state.kpis.total_orders"
+                 growth="state.kpis.orders_growth"  icon="'fa-shopping-cart'"
+                 accentColor="'#875A7B'" type="'number'" loading="state.loading"/>
+
+        <KpiCard title="'Avg Order Value'" value="state.kpis.aov"
+                 growth="state.kpis.aov_growth"     icon="'fa-line-chart'"
+                 accentColor="'#3AADAA'" type="'currency'" loading="state.loading"
+                 currencySymbol="state.currency_symbol"
+                 currencyPosition="state.currency_position"/>
+
+        <KpiCard title="'Items Sold'"      value="state.kpis.total_items"
+                 growth="state.kpis.items_growth"   icon="'fa-cubes'"
+                 accentColor="'#E06F5D'" type="'number'" loading="state.loading"/>
+
+        <KpiCard title="'Total Guests'"    value="state.kpis.total_guests"
+                 growth="state.kpis.guests_growth"  icon="'fa-users'"
+                 accentColor="'#56B3B4'" type="'number'" loading="state.loading"/>
+
+        <KpiCard title="'Per Person Cost'" value="state.kpis.per_person_cost"
+                 growth="state.kpis.ppc_growth"     icon="'fa-user'"
+                 accentColor="'#A66DCD'" type="'currency'" loading="state.loading"
+                 currencySymbol="state.currency_symbol"
+                 currencyPosition="state.currency_position"/>
+    </div>
+
+    <!-- ══ Row 1 — Sales Trend (60%) + Top Products (40%) ════════════════ -->
+    <div class="sp-row sp-row--7-5">
+
+        <!-- Sales Trend ─────────────────────────────────── -->
+        <div class="sp-card">
+            <div class="sp-card-hd">
+                <div class="sp-card-hd-left">
+                    <span class="sp-dot" style="background:#017E84"/>
+                    <span class="sp-card-title">Sales Trend</span>
+                    <span class="sp-period-badge"
+                          t-esc="state.filters.period.charAt(0).toUpperCase() + state.filters.period.slice(1)"/>
+                </div>
+                <t t-call="sp_pos_dashboard.ChartToggle">
+                    <t t-set="section" t-value="'trend'"/>
+                    <t t-set="types" t-value="[
+                        {key:'area', icon:'fa-area-chart',  title:'Area'},
+                        {key:'line', icon:'fa-line-chart',  title:'Line'},
+                        {key:'bar',  icon:'fa-bar-chart',   title:'Bar'},
+                    ]"/>
+                </t>
+            </div>
+            <div class="sp-card-bd">
+                <t t-if="state.loading"><div class="sp-skel sp-skel--chart"/></t>
+                <t t-else="">
+                    <ChartWidget
+                        type="cjsType('trend')"
+                        chartKey="state.chartTypes.trend"
+                        data="salesTrendData"
+                        height="'270px'"
+                        options="cjsOpts('trend')"/>
+                </t>
+            </div>
+        </div>
+
+        <!-- Top 10 Products ─────────────────────────────── -->
+        <div class="sp-card">
+            <div class="sp-card-hd">
+                <div class="sp-card-hd-left">
+                    <span class="sp-dot" style="background:#875A7B"/>
+                    <span class="sp-card-title">Top 10 Products</span>
+                    <span class="sp-hint">click to drill-down</span>
+                </div>
+                <t t-call="sp_pos_dashboard.ChartToggle">
+                    <t t-set="section" t-value="'products'"/>
+                    <t t-set="types" t-value="[
+                        {key:'hbar',     icon:'fa-align-left', title:'Horizontal Bar'},
+                        {key:'bar',      icon:'fa-bar-chart',  title:'Vertical Bar'},
+                        {key:'pie',      icon:'fa-pie-chart',  title:'Pie'},
+                        {key:'doughnut', icon:'fa-circle-o',   title:'Doughnut'},
+                    ]"/>
+                </t>
+            </div>
+            <div class="sp-card-bd">
+                <t t-if="state.loading"><div class="sp-skel sp-skel--chart"/></t>
+                <t t-else="">
+                    <ChartWidget
+                        type="cjsType('products')"
+                        chartKey="state.chartTypes.products"
+                        data="topProductsData"
+                        height="'270px'"
+                        onClick="handlers.product"
+                        options="cjsOpts('products')"/>
+                </t>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ══ Row 2 — Top Customers (50%) + Categories (50%) ════════════════ -->
+    <div class="sp-row sp-row--6-6">
+
+        <!-- Top Customers ───────────────────────────────── -->
+        <div class="sp-card">
+            <div class="sp-card-hd">
+                <div class="sp-card-hd-left">
+                    <span class="sp-dot" style="background:#3AADAA"/>
+                    <span class="sp-card-title">Top 10 Customers</span>
+                    <span class="sp-hint">click row or chart to drill-down</span>
+                </div>
+                <t t-call="sp_pos_dashboard.ChartToggle">
+                    <t t-set="section" t-value="'customers'"/>
+                    <t t-set="types" t-value="[
+                        {key:'hbar',     icon:'fa-align-left', title:'Horizontal Bar'},
+                        {key:'bar',      icon:'fa-bar-chart',  title:'Vertical Bar'},
+                        {key:'pie',      icon:'fa-pie-chart',  title:'Pie'},
+                        {key:'doughnut', icon:'fa-circle-o',   title:'Doughnut'},
+                    ]"/>
+                </t>
+            </div>
+            <div class="sp-card-bd sp-card-bd--split">
+                <t t-if="state.loading">
+                    <div class="sp-skel sp-skel--chart-sm"/>
+                </t>
+                <t t-else="">
+                    <ChartWidget
+                        type="cjsType('customers')"
+                        chartKey="state.chartTypes.customers"
+                        data="topCustomersData"
+                        height="'200px'"
+                        onClick="handlers.customer"
+                        options="cjsOpts('customers')"/>
+                </t>
+                <!-- Table always visible -->
+                <table class="sp-tbl">
+                    <thead>
+                        <tr><th>#</th><th>Customer</th><th class="r">Orders</th><th class="r">Revenue</th></tr>
+                    </thead>
+                    <tbody>
+                        <t t-if="state.loading">
+                            <t t-foreach="[1,2,3,4]" t-as="r" t-key="r">
+                                <tr><td colspan="4"><div class="sp-skel sp-skel--row"/></td></tr>
+                            </t>
+                        </t>
+                        <t t-elif="!state.topCustomers.length">
+                            <tr><td colspan="4" class="sp-empty">No customer data</td></tr>
+                        </t>
+                        <t t-else="">
+                            <t t-foreach="state.topCustomers" t-as="c" t-key="c.id">
+                                <tr class="sp-tbl-row" t-on-click="() => this.handlers.customer(c_index)">
+                                    <td class="sp-rank" t-esc="c_index + 1"/>
+                                    <td class="sp-name" t-esc="c.name"/>
+                                    <td class="r sp-muted" t-esc="c.orders"/>
+                                    <td class="r sp-bold" t-esc="fmt(c.total)"/>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Category Distribution ───────────────────────── -->
+        <div class="sp-card">
+            <div class="sp-card-hd">
+                <div class="sp-card-hd-left">
+                    <span class="sp-dot" style="background:#E06F5D"/>
+                    <span class="sp-card-title">Category Distribution</span>
+                    <span class="sp-hint">click to drill-down</span>
+                </div>
+                <t t-call="sp_pos_dashboard.ChartToggle">
+                    <t t-set="section" t-value="'categories'"/>
+                    <t t-set="types" t-value="[
+                        {key:'doughnut', icon:'fa-circle-o',   title:'Doughnut'},
+                        {key:'pie',      icon:'fa-pie-chart',   title:'Pie'},
+                        {key:'polar',    icon:'fa-dot-circle-o',title:'Polar Area'},
+                        {key:'bar',      icon:'fa-bar-chart',   title:'Bar'},
+                        {key:'hbar',     icon:'fa-align-left',  title:'Horizontal Bar'},
+                    ]"/>
+                </t>
+            </div>
+            <div class="sp-card-bd sp-card-bd--split">
+                <t t-if="state.loading">
+                    <div class="sp-skel sp-skel--donut"/>
+                </t>
+                <t t-else="">
+                    <ChartWidget
+                        type="cjsType('categories')"
+                        chartKey="state.chartTypes.categories"
+                        data="categoriesData"
+                        height="'220px'"
+                        onClick="handlers.category"
+                        options="cjsOpts('categories')"/>
+                </t>
+                <!-- Legend list -->
+                <div class="sp-legend">
+                    <t t-foreach="state.topCategories" t-as="cat" t-key="cat.id">
+                        <div class="sp-legend-row sp-tbl-row"
+                             t-on-click="() => this.handlers.category(cat_index)">
+                            <span class="sp-legend-dot"
+                                  t-att-style="'background:' + (['#017E84','#875A7B','#3AADAA','#E06F5D','#F4A460'][cat_index] || '#aaa')"/>
+                            <span class="sp-name" t-esc="cat.name"/>
+                            <span class="sp-bold" t-esc="fmt(cat.total)"/>
+                        </div>
+                    </t>
+                    <t t-if="!state.loading and !state.topCategories.length">
+                        <p class="sp-empty">No category data</p>
+                    </t>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ══ Row 3 — Payment Methods (35%) + Staff Performance (65%) ═══════ -->
+    <div class="sp-row sp-row--4-8">
+
+        <!-- Payment Methods ─────────────────────────────── -->
+        <div class="sp-card">
+            <div class="sp-card-hd">
+                <div class="sp-card-hd-left">
+                    <span class="sp-dot" style="background:#F4A460"/>
+                    <span class="sp-card-title">Payment Methods</span>
+                </div>
+                <t t-call="sp_pos_dashboard.ChartToggle">
+                    <t t-set="section" t-value="'payments'"/>
+                    <t t-set="types" t-value="[
+                        {key:'pie',      icon:'fa-pie-chart',   title:'Pie'},
+                        {key:'doughnut', icon:'fa-circle-o',    title:'Doughnut'},
+                        {key:'polar',    icon:'fa-dot-circle-o',title:'Polar Area'},
+                        {key:'bar',      icon:'fa-bar-chart',   title:'Bar'},
+                    ]"/>
+                </t>
+            </div>
+            <div class="sp-card-bd">
+                <t t-if="state.loading">
+                    <div class="sp-skel sp-skel--donut sp-skel--donut-sm"/>
+                </t>
+                <t t-else="">
+                    <ChartWidget
+                        type="cjsType('payments')"
+                        chartKey="state.chartTypes.payments"
+                        data="paymentData"
+                        height="'190px'"
+                        onClick="handlers.payment"
+                        options="cjsOpts('payments')"/>
+                </t>
+                <div class="sp-pay-list">
+                    <t t-foreach="state.paymentMethods" t-as="pay" t-key="pay.name">
+                        <div class="sp-pay-row sp-tbl-row"
+                             t-on-click="() => this.handlers.payment(pay_index)">
+                            <span class="sp-legend-dot"
+                                  t-att-style="'background:' + (['#017E84','#875A7B','#3AADAA','#E06F5D','#F4A460'][pay_index] || '#aaa')"/>
+                            <span class="sp-name" t-esc="pay.name"/>
+                            <span class="sp-bold" t-esc="fmt(pay.total)"/>
+                        </div>
+                    </t>
+                    <t t-if="!state.loading and !state.paymentMethods.length">
+                        <p class="sp-empty">No payment data</p>
+                    </t>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Performance ───────────────────────────── -->
+        <div class="sp-card">
+            <div class="sp-card-hd">
+                <div class="sp-card-hd-left">
+                    <span class="sp-dot" style="background:#56B3B4"/>
+                    <span class="sp-card-title">Staff Performance</span>
+                    <span class="sp-hint">click chart or row to drill-down</span>
+                </div>
+                <t t-call="sp_pos_dashboard.ChartToggle">
+                    <t t-set="section" t-value="'staff'"/>
+                    <t t-set="types" t-value="[
+                        {key:'bar',      icon:'fa-bar-chart',   title:'Vertical Bar'},
+                        {key:'hbar',     icon:'fa-align-left',  title:'Horizontal Bar'},
+                        {key:'line',     icon:'fa-line-chart',  title:'Line'},
+                        {key:'doughnut', icon:'fa-circle-o',    title:'Doughnut'},
+                        {key:'pie',      icon:'fa-pie-chart',   title:'Pie'},
+                    ]"/>
+                </t>
+            </div>
+            <div class="sp-card-bd sp-card-bd--split">
+                <t t-if="state.loading">
+                    <div class="sp-skel sp-skel--chart-sm"/>
+                </t>
+                <t t-else="">
+                    <ChartWidget
+                        type="cjsType('staff')"
+                        chartKey="state.chartTypes.staff"
+                        data="staffData"
+                        height="'200px'"
+                        onClick="handlers.staff"
+                        options="cjsOpts('staff')"/>
+                </t>
+                <table class="sp-tbl">
+                    <thead>
+                        <tr><th>Cashier</th><th class="c">Orders</th><th class="r">Revenue</th></tr>
+                    </thead>
+                    <tbody>
+                        <t t-if="state.loading">
+                            <t t-foreach="[1,2,3,4]" t-as="r" t-key="r">
+                                <tr><td colspan="3"><div class="sp-skel sp-skel--row"/></td></tr>
+                            </t>
+                        </t>
+                        <t t-elif="!state.staffPerformance.length">
+                            <tr><td colspan="3" class="sp-empty">No staff data</td></tr>
+                        </t>
+                        <t t-else="">
+                            <t t-foreach="state.staffPerformance" t-as="s" t-key="s.id || s.name">
+                                <tr class="sp-tbl-row" t-on-click="() => this.handlers.staff(s_index)">
+                                    <td class="sp-name" t-esc="s.name"/>
+                                    <td class="c sp-muted" t-esc="s.orders"/>
+                                    <td class="r sp-bold" t-esc="fmt(s.total)"/>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Empty state -->
+    <t t-if="!state.loading and !state.kpis.total_orders">
+        <div class="sp-empty-state">
+            <i class="fa fa-bar-chart sp-empty-icon"/>
+            <h5>No POS orders found</h5>
+            <p>Adjust the date range or filters and click <strong>Apply</strong>.</p>
+        </div>
+    </t>
+
+    <div class="sp-footer-credit">Designed By SP Technologies Solution.</div>
+
+</div>
+</t>
+
+</templates>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="sp_pos_dashboard.ChartWidget" owl="1">
+    <div class="sp-chart-wrap" t-att-style="'height:' + props.height">
+        <canvas t-ref="canvas"/>
+    </div>
+</t>
+
+</templates>

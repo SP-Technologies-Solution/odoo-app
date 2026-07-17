@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="sp_pos_dashboard.KpiCard" owl="1">
+    <div class="sp-kpi-card"
+         t-att-style="'--sp-accent:' + props.accentColor"
+         t-att-class="props.onClick ? 'sp-kpi-card--clickable' : ''"
+         t-on-click="handleClick">
+
+        <!-- Accent bar -->
+        <div class="sp-kpi-accent"/>
+
+        <div class="sp-kpi-body">
+            <!-- Icon -->
+            <div class="sp-kpi-icon-wrap">
+                <i class="fa" t-att-class="props.icon"/>
+            </div>
+
+            <!-- Content -->
+            <div class="sp-kpi-content">
+                <p class="sp-kpi-label" t-esc="props.title"/>
+
+                <!-- Skeleton while loading -->
+                <t t-if="props.loading">
+                    <div class="sp-skeleton sp-skeleton--value"/>
+                    <div class="sp-skeleton sp-skeleton--badge mt-2"/>
+                </t>
+                <t t-else="">
+                    <p class="sp-kpi-value" t-esc="formattedValue"/>
+                    <span t-att-class="'sp-kpi-badge sp-kpi-badge--' + (isPositive ? 'up' : 'down')">
+                        <i class="fa" t-att-class="isPositive ? 'fa-arrow-up' : 'fa-arrow-down'"/>
+                        <t t-esc="growthAbs"/>%
+                        <span class="sp-kpi-badge-sub">vs prev period</span>
+                    </span>
+                </t>
+            </div>
+        </div>
+    </div>
+</t>
+
+</templates>

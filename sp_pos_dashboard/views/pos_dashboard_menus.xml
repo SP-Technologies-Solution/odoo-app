@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_sp_pos_dashboard"
+        name="POS Dashboard"
+        parent="point_of_sale.menu_point_root"
+        action="action_sp_pos_dashboard"
+        sequence="5"/>
+</odoo>
