@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SP POS WhatsApp Cloud Connector</title>
+    <title>SP POS Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; color:#241a2b; background-color:#faf7fb;">
@@ -18,19 +18,19 @@
                         <span style="font-size:13px; font-weight:700; color:#8E4585; letter-spacing:0.04em;">SP TECHNOLOGIES SOLUTION</span>
                     </div>
                     <h1 class="fw-bold mb-3" style="font-size:46px; line-height:1.08; color:#ffffff;">
-                        WhatsApp Cloud Connector<br>
+                        POS Dashboard<br>
                         <span style="color:#a8f0bf;">for Point of Sale</span>
                     </h1>
                     <p class="mb-4" style="font-size:18px; line-height:1.75; color:#ffffff; opacity:0.95; max-width:560px;">
-                        Send your customer their <b>POS receipt on WhatsApp</b> with a single tap at the counter
-                        — a clean PDF, no paper, no printer. Powered by Meta's official
-                        <b>WhatsApp Business Cloud API</b>, with live delivery tracking synced into Odoo&nbsp;18.
+                        Turn your Point of Sale data into a live, interactive <b>analytics dashboard</b> — KPI cards,
+                        sales trends, top products and customers, category and payment splits, and staff performance.
+                        Filter, drill down and <b>export to Excel</b>, all inside Odoo&nbsp;19.
                     </p>
                     <div>
-                        <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(37,211,102,0.22); border:1px solid rgba(37,211,102,0.5);">Odoo 18</span>
+                        <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(37,211,102,0.22); border:1px solid rgba(37,211,102,0.5);">Odoo 19</span>
                         <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26);">Community</span>
                         <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26);">Enterprise</span>
-                        <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26);">Official Cloud API</span>
+                        <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26);">Real-Time</span>
                     </div>
                 </div>
                 <div class="col-lg-5 p-4 p-lg-5">
@@ -38,16 +38,16 @@
                         <img src="icon.png" alt="App icon" style="width:78px; height:78px; border-radius:18px;">
                     </div>
                     <div class="p-3 mb-3" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
-                        <div class="fw-bold mb-1" style="color:#ffffff;">🟢 One-Click Send</div>
-                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">A <b>Send on WhatsApp</b> button right on the POS payment screen — fast at the counter.</div>
+                        <div class="fw-bold mb-1" style="color:#ffffff;">📊 KPI Cards at a Glance</div>
+                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Total Sales, Orders, Average Order Value and Items Sold — with period-over-period growth.</div>
                     </div>
                     <div class="p-3 mb-3" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
-                        <div class="fw-bold mb-1" style="color:#ffffff;">🧾 Per-Order Receipt PDF</div>
-                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Adds a proper per-order POS receipt report that Odoo core doesn't ship.</div>
+                        <div class="fw-bold mb-1" style="color:#ffffff;">🔎 Click-to-Drill-Down</div>
+                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Click any chart slice, bar or row to open the detail behind it.</div>
                     </div>
                     <div class="p-3" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
-                        <div class="fw-bold mb-1" style="color:#ffffff;">✅ Live Delivery Status</div>
-                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Sent → delivered → read → failed, streamed back over the webhook in real time.</div>
+                        <div class="fw-bold mb-1" style="color:#ffffff;">📥 One-Click Excel Export</div>
+                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Export the full dashboard to a formatted Excel file in a single click.</div>
                     </div>
                 </div>
             </div>
@@ -58,56 +58,55 @@
     <div class="container pb-4">
         <div class="text-center mb-4">
             <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Why You'll Love It</div>
-            <h2 class="fw-bold mt-2 mb-3" style="font-size:40px; line-height:1.15; color:#241a2b;">Receipts on WhatsApp, built right into your Point of Sale.</h2>
+            <h2 class="fw-bold mt-2 mb-3" style="font-size:40px; line-height:1.15; color:#241a2b;">Every POS metric that matters, on one screen.</h2>
             <p class="mx-auto mb-0" style="max-width:840px; color:#5b6473; font-size:17px; line-height:1.8;">
-                A lean connector that speaks directly to Meta's Cloud API — no third-party middleware.
-                Approved templates keep you inside the 24-hour window, and every message is logged and
-                tracked back to its POS order.
+                A complete Point of Sale analytics dashboard — fast, interactive and built for daily use.
+                Slice your sales by date, shop, company and session, switch any widget between chart types,
+                and drill straight into the numbers behind them.
             </p>
         </div>
 
         <div class="row g-4">
-            <!-- card -->
             <div class="col-md-6 col-xl-4">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🧾</div>
-                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Receipts on WhatsApp</h3>
-                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Send a POS receipt to the customer's phone as a clean PDF — no paper, no printer needed.</p>
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">📊</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">KPI Cards</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Total Sales, Total Orders, Average Order Value and Items Sold — each with a growth indicator vs the previous period.</p>
                 </div>
             </div>
             <div class="col-md-6 col-xl-4">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🖨️</div>
-                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Per-Order Receipt PDF</h3>
-                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Adds a proper per-order POS receipt report; Odoo core only ships session-level ones.</p>
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">📈</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Sales Trend</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Track sales over time — daily, weekly or monthly — as an area, line or column chart you can toggle instantly.</p>
                 </div>
             </div>
             <div class="col-md-6 col-xl-4">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">✅</div>
-                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Live Delivery Status</h3>
-                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Sent, delivered, read and failed states sync over a secure webhook in real time.</p>
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🏆</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Top Products &amp; Customers</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Your best-selling products and highest-value customers, ranked by revenue with orders and totals.</p>
                 </div>
             </div>
             <div class="col-md-6 col-xl-4">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🧩</div>
-                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Meta Templates Synced</h3>
-                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Approved templates are pulled straight from Meta — never hand-typed or guessed.</p>
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🍩</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Category &amp; Payment Split</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">See revenue by product category and a clean Cash vs Card breakdown of how customers pay.</p>
                 </div>
             </div>
             <div class="col-md-6 col-xl-4">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🏢</div>
-                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Multi-Company</h3>
-                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Record rules keep each company's WhatsApp accounts and messages cleanly separated.</p>
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">👥</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Staff Performance</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Compare cashiers by orders and revenue to see who's driving your sales at the counter.</p>
                 </div>
             </div>
             <div class="col-md-6 col-xl-4">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">⚖️</div>
-                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Meta App-Review Ready</h3>
-                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Built-in Privacy Policy, Terms and Data Deletion pages, served on your own domain.</p>
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">📥</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Excel Export</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Export the whole dashboard to a formatted Excel workbook in one click — ready to share.</p>
                 </div>
             </div>
         </div>
@@ -119,24 +118,27 @@
             <div class="col-lg-7">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
                     <div class="mb-3" style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Key Features</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Send a <b>POS receipt</b> to the customer on WhatsApp, straight from the order.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Adds a proper <b>per-order POS receipt PDF</b> report to Odoo.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Respects Meta's <b>24-hour service window</b> with an approved document-header template.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Message templates synchronised from Meta</b>, with header &amp; body-variable support.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Delivery statuses (<b>sent / delivered / read / failed</b>) arrive over a secure webhook.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Phone numbers normalised to <b>E.164</b> with the <code>phonenumbers</code> library.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>User / Administrator</b> security groups, plus a full message log per POS order.</div>
-                    <div style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Lean install — depends only on <b>Point of Sale</b> (no Accounting or Sales required).</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>KPI cards</b> — Total Sales, Orders, Average Order Value &amp; Items Sold with growth vs previous period.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Sales Trend</b> chart with Daily / Weekly / Monthly grouping.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Top 10 Products</b>, <b>Top 10 Customers</b>, <b>Category Distribution</b>, <b>Payment Methods</b> &amp; <b>Staff Performance</b>.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Switchable chart types</b> — bar, column, line, pie or donut on every widget.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Click-to-drill-down</b> from any chart or table row into the detail.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Powerful filters</b> — Date range, Period, Company, POS Shop and Session.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Multi-company &amp; multi-shop</b> ready, with live <b>Refresh</b>.</div>
+                    <div style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>One-click Excel export</b> of the full dashboard.</div>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="mb-3" style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Set Up in 5 Steps</div>
-                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">1</div><div style="color:#444; font-size:15px; line-height:1.65;">Create a Meta app with the <b>WhatsApp</b> product and a permanent <b>System User token</b>.</div></div>
-                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">2</div><div style="color:#444; font-size:15px; line-height:1.65;">In Odoo, open <b>WhatsApp &gt; Configuration &gt; Accounts</b> and enter your IDs and token.</div></div>
-                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">3</div><div style="color:#444; font-size:15px; line-height:1.65;">Paste the <b>Webhook URL</b> &amp; <b>Verify Token</b> into Meta, subscribe to <b>messages</b>.</div></div>
-                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">4</div><div style="color:#444; font-size:15px; line-height:1.65;">Click <b>Sync Templates</b> to pull your approved templates from Meta.</div></div>
-                    <div class="d-flex" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">5</div><div style="color:#444; font-size:15px; line-height:1.65;">Open the POS and hit <b>Send on WhatsApp</b>. The receipt is on its way. Done!</div></div>
+                    <div class="mb-3" style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Up &amp; Running in 3 Steps</div>
+                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">1</div><div style="color:#444; font-size:15px; line-height:1.65;">Install the module and open <b>Point of Sale &gt; POS Dashboard</b>.</div></div>
+                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">2</div><div style="color:#444; font-size:15px; line-height:1.65;">Set your <b>date range, shop and session</b> filters and click <b>Apply</b>.</div></div>
+                    <div class="d-flex" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">3</div><div style="color:#444; font-size:15px; line-height:1.65;">Explore the charts, <b>drill down</b> into any figure, or hit <b>Export Excel</b>. Done!</div></div>
+
+                    <div class="mt-4 p-3" style="background-color:#f7f2f8; border-radius:12px;">
+                        <div class="fw-bold mb-1" style="color:#8E4585; font-size:14px;">No configuration needed</div>
+                        <div style="color:#5b6473; font-size:13.5px; line-height:1.6;">Works out of the box on top of your existing Point of Sale orders and sessions.</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -146,96 +148,58 @@
     <div class="container pb-4">
         <div class="text-center mb-4">
             <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">A Guided Tour</div>
-            <h2 class="fw-bold mt-2" style="font-size:40px; line-height:1.15; color:#241a2b;">From setup to a receipt on the customer's phone.</h2>
+            <h2 class="fw-bold mt-2" style="font-size:40px; line-height:1.15; color:#241a2b;">See the dashboard in action.</h2>
         </div>
 
         <div class="row g-4">
-            <!-- shot 1 -->
             <div class="col-12">
                 <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
                     <div class="d-flex align-items-center mb-2" style="gap:14px;">
                         <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">1</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Assign WhatsApp Access</h3>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">The Complete Dashboard</h3>
                     </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Grant users a <b>WhatsApp</b> role — <b>User</b> to send receipts, <b>Administrator</b> to manage accounts and templates.</p>
-                    <img src="1.png" alt="WhatsApp security group on a user" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">KPI cards, filters, Sales Trend and every analytics widget on a single, fast-loading screen — with <b>Refresh</b> and <b>Export Excel</b> one click away.</p>
+                    <img src="1.png" alt="Complete POS analytics dashboard" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
                 </div>
             </div>
-            <!-- shot 2 -->
             <div class="col-12">
                 <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
                     <div class="d-flex align-items-center mb-2" style="gap:14px;">
                         <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">2</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Open the WhatsApp App</h3>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Customers, Categories &amp; Payments</h3>
                     </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">A dedicated <b>WhatsApp</b> app appears in the menu, guiding you to connect your first Cloud API number.</p>
-                    <img src="2.png" alt="WhatsApp app connect a number" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Top customers, category distribution, a Cash vs Card payment split and staff performance — all visible together.</p>
+                    <img src="2.png" alt="Top customers, category and payment widgets" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
                 </div>
             </div>
-            <!-- shot 3 -->
             <div class="col-12">
                 <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
                     <div class="d-flex align-items-center mb-2" style="gap:14px;">
                         <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">3</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Connect Your Account</h3>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Exact Numbers in Ranked Tables</h3>
                     </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Paste your Meta credentials, hit <b>Test Connection</b>, and copy the ready-made <b>Webhook</b> and <b>Meta App-Review</b> URLs.</p>
-                    <img src="3.png" alt="WhatsApp account credentials and webhook" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Every chart is backed by a precise table — customer and cashier rankings with exact <b>orders</b> and <b>revenue</b>.</p>
+                    <img src="3.png" alt="Ranked customer and staff performance tables" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
                 </div>
             </div>
-            <!-- shot 4 -->
             <div class="col-12">
                 <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
                     <div class="d-flex align-items-center mb-2" style="gap:14px;">
                         <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">4</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Build a Document Template</h3>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Your Chart, Your Way</h3>
                     </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">A guided wizard creates a document-header template and submits it to Meta — usually approved within the hour.</p>
-                    <img src="4.png" alt="Create document template wizard" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Switch any widget between <b>bar, column, line, pie or donut</b> with the toggle in its corner — the same data, the view you prefer.</p>
+                    <img src="4.png" alt="Switchable chart types on every widget" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
                 </div>
             </div>
-            <!-- shot 5 -->
             <div class="col-12">
                 <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
                     <div class="d-flex align-items-center mb-2" style="gap:14px;">
                         <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">5</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Sync Approved Templates</h3>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Interactive &amp; Drill-Down</h3>
                     </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Pull your templates back from Meta with live approval status — <b>Approved</b> or <b>In Review</b> — right inside Odoo.</p>
-                    <img src="5.png" alt="Synced WhatsApp templates list" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
-                </div>
-            </div>
-            <!-- shot 6 -->
-            <div class="col-12">
-                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
-                    <div class="d-flex align-items-center mb-2" style="gap:14px;">
-                        <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">6</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Track Every Message</h3>
-                    </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">The message log lists every receipt sent, with recipient, template and live <b>Sent / Delivered / Read</b> state.</p>
-                    <img src="6.png" alt="WhatsApp messages log with statuses" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
-                </div>
-            </div>
-            <!-- shot 7 -->
-            <div class="col-12">
-                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
-                    <div class="d-flex align-items-center mb-2" style="gap:14px;">
-                        <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">7</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Configure Your POS</h3>
-                    </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Turn on <b>Send receipts on WhatsApp</b> per shop and pick which account and receipt template to use.</p>
-                    <img src="7.png" alt="Point of Sale WhatsApp settings" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
-                </div>
-            </div>
-            <!-- shot 8 -->
-            <div class="col-12">
-                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
-                    <div class="d-flex align-items-center mb-2" style="gap:14px;">
-                        <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">8</div>
-                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Send at the Counter</h3>
-                    </div>
-                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">On the payment screen, one tap of <b>Send on WhatsApp</b> delivers the receipt straight to the customer's phone.</p>
-                    <img src="8.png" alt="Send on WhatsApp from POS payment screen" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Click a slice, bar or row to drill into the detail behind it — every widget is fully interactive.</p>
+                    <img src="5.png" alt="Interactive drill-down charts" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
                 </div>
             </div>
         </div>
@@ -246,15 +210,15 @@
         <div class="row g-4 align-items-center">
             <div class="col-lg-5">
                 <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Where It Shines</div>
-                <h2 class="fw-bold mt-2 mb-3" style="font-size:34px; line-height:1.15; color:#241a2b;">Perfect for busy counters &amp; food stalls.</h2>
-                <p class="mb-0" style="color:#5b6473; font-size:17px; line-height:1.8;">Digital, trackable receipts your customers actually keep — while you cut paper and printer costs.</p>
+                <h2 class="fw-bold mt-2 mb-3" style="font-size:34px; line-height:1.15; color:#241a2b;">Decisions backed by real POS numbers.</h2>
+                <p class="mb-0" style="color:#5b6473; font-size:17px; line-height:1.8;">Stop exporting spreadsheets by hand — get the answers your managers ask for in seconds.</p>
             </div>
             <div class="col-lg-7">
                 <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Message the receipt to a walk-in customer instead of printing paper.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Give customers a digital copy they can keep, search and never lose.</div>
-                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Confirm the receipt was actually read with WhatsApp read-receipts.</div>
-                    <div style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Cut paper and printer costs at high-volume counters and food stalls.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Spot your best-selling products and top-spending customers at a glance.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Compare shops, sessions and cashiers to see what's working.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Understand payment habits with a clean Cash vs Card split.</div>
+                    <div style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Share a formatted Excel report with management in one click.</div>
                 </div>
             </div>
         </div>
@@ -266,7 +230,7 @@
             <div class="row align-items-center g-4">
                 <div class="col-lg-7">
                     <h3 class="fw-bold mb-3" style="font-size:32px; color:#ffffff;">Delivered by SP Technologies Solution</h3>
-                    <p class="mb-4" style="color:#ffffff; line-height:1.9; opacity:0.95;">Need this tailored further — custom templates, extra document types, or a full WhatsApp workflow for your Odoo? We build Odoo modules, integrations and long-term support. Reach out anytime.</p>
+                    <p class="mb-4" style="color:#ffffff; line-height:1.9; opacity:0.95;">Need extra KPIs, custom charts, or a dashboard tailored to your business? We build Odoo modules, dashboards, integrations and long-term support. Reach out anytime.</p>
                     <a href="https://www.sptechnologiessolution.com/contactus" target="_blank" rel="noopener noreferrer" style="display:inline-block; background-color:#ffffff; color:#8E4585; font-weight:700; text-decoration:none; padding:12px 30px; border-radius:999px; font-size:15px;">Let's Talk →</a>
                 </div>
                 <div class="col-lg-5">
@@ -300,7 +264,7 @@
     </div>
 
     <div class="container pb-5">
-        <p class="text-center mb-0" style="color:#5b6473; font-size:13px;">© SP Technologies Solution — WhatsApp Cloud Connector for POS · Compatible with Odoo 18 Community &amp; Enterprise</p>
+        <p class="text-center mb-0" style="color:#5b6473; font-size:13px;">© SP Technologies Solution — POS Dashboard · Compatible with Odoo 19 Community &amp; Enterprise</p>
     </div>
 
 </div>
