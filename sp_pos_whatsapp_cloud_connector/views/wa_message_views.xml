@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_wa_message_list" model="ir.ui.view">
+        <field name="name">wa.message.list</field>
+        <field name="model">wa.message</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" decoration-danger="state == 'failed'" decoration-muted="state == 'draft'">
+                <field name="create_date" string="Queued"/>
+                <field name="document_name"/>
+                <field name="partner_id"/>
+                <field name="phone"/>
+                <field name="template_id"/>
+                <field name="state" widget="badge"
+                       decoration-success="state in ('delivered', 'read')"
+                       decoration-info="state == 'sent'"
+                       decoration-danger="state == 'failed'"/>
+                <field name="sent_date" optional="hide"/>
+                <field name="wamid" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_wa_message_form" model="ir.ui.view">
+        <field name="name">wa.message.form</field>
+        <field name="model">wa.message</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_resend" type="object" string="Resend"
+                            class="btn-primary" invisible="state != 'failed'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="sent,delivered,read"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_document" type="object"
+                                class="oe_stat_button" icon="fa-file-text-o"
+                                invisible="not res_id">
+                            <span class="o_stat_text">Document</span>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="phone"/>
+                            <field name="document_name"/>
+                            <field name="account_id"/>
+                        </group>
+                        <group>
+                            <field name="template_id"/>
+                            <field name="attachment_id"/>
+                            <field name="sent_date"/>
+                            <field name="wamid"/>
+                            <field name="media_id" groups="base.group_no_one"/>
+                            <field name="model" invisible="1"/>
+                            <field name="res_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Content">
+                        <field name="body" nolabel="1"/>
+                        <field name="portal_url" widget="url"/>
+                    </group>
+                    <group string="Error" invisible="state != 'failed'">
+                        <field name="error_message" nolabel="1" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_wa_message_search" model="ir.ui.view">
+        <field name="name">wa.message.search</field>
+        <field name="model">wa.message</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="phone"/>
+                <field name="document_name"/>
+                <filter name="failed" string="Failed" domain="[('state', '=', 'failed')]"/>
+                <filter name="delivered" string="Delivered"
+                        domain="[('state', 'in', ['delivered', 'read'])]"/>
+                <separator/>
+                <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                <filter name="group_partner" string="Recipient"
+                        context="{'group_by': 'partner_id'}"/>
+                <filter name="group_model" string="Document Type"
+                        context="{'group_by': 'model'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_wa_message" model="ir.actions.act_window">
+        <field name="name">WhatsApp Messages</field>
+        <field name="res_model">wa.message</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

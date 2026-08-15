@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Editable branding for the hosted legal pages. The domain itself is
+         taken from the standard ``web.base.url`` system parameter. -->
+    <record id="param_legal_company_name" model="ir.config_parameter">
+        <field name="key">sp_pos_whatsapp_cloud_connector.legal_company_name</field>
+        <field name="value">SP Technologies Solution</field>
+    </record>
+    <record id="param_legal_contact_email" model="ir.config_parameter">
+        <field name="key">sp_pos_whatsapp_cloud_connector.legal_contact_email</field>
+        <field name="value">contact@sptechnologiessolution.com</field>
+    </record>
+</odoo>

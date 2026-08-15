@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_wa_account_list" model="ir.ui.view">
+        <field name="name">wa.account.list</field>
+        <field name="model">wa.account</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="display_phone_number"/>
+                <field name="verified_name"/>
+                <field name="quality_rating"/>
+                <field name="api_version"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_wa_account_form" model="ir.ui.view">
+        <field name="name">wa.account.form</field>
+        <field name="model">wa.account</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_test_connection" type="object"
+                            string="Test Connection" class="btn-primary"/>
+                    <button name="action_sync_templates" type="object"
+                            string="Sync Templates"/>
+                    <button name="%(action_wa_template_builder)d" type="action"
+                            string="Create Document Template"
+                            groups="sp_pos_whatsapp_cloud_connector.group_wa_manager"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. SP Technologies Sales"/></h1>
+                    </div>
+                    <group>
+                        <group string="Credentials">
+                            <field name="phone_number_id"/>
+                            <field name="waba_id"/>
+                            <field name="app_id"/>
+                            <field name="access_token" password="True"
+                                   groups="sp_pos_whatsapp_cloud_connector.group_wa_manager"/>
+                            <field name="api_version"/>
+                            <field name="graph_base_url" groups="base.group_no_one"/>
+                        </group>
+                        <group string="Status">
+                            <field name="display_phone_number"/>
+                            <field name="verified_name"/>
+                            <field name="quality_rating"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="default_template_id"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group string="Webhook">
+                        <div class="text-muted" colspan="2">
+                            Paste these into Meta &gt; WhatsApp &gt; Configuration &gt; Webhook,
+                            then subscribe to the <strong>messages</strong> field to receive
+                            delivery statuses.
+                        </div>
+                        <field name="webhook_url" readonly="1" widget="CopyClipboardChar"/>
+                        <field name="verify_token" readonly="1" widget="CopyClipboardChar"
+                               groups="sp_pos_whatsapp_cloud_connector.group_wa_manager"/>
+                        <button name="action_regenerate_verify_token" type="object"
+                                string="Regenerate token" class="btn-link"
+                                groups="sp_pos_whatsapp_cloud_connector.group_wa_manager"/>
+                    </group>
+                    <group string="App Review (Meta) - Legal URLs">
+                        <div class="text-muted" colspan="2">
+                            Paste these into Meta &gt; App settings &gt; Basic. They are
+                            served by this Odoo instance, so your domain must be reachable
+                            over HTTPS.
+                        </div>
+                        <field name="privacy_policy_url" readonly="1" widget="CopyClipboardChar"/>
+                        <field name="terms_url" readonly="1" widget="CopyClipboardChar"/>
+                        <field name="data_deletion_url" readonly="1" widget="CopyClipboardChar"/>
+                    </group>
+                    <notebook>
+                        <page string="Templates" name="templates">
+                            <field name="template_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="language_code"/>
+                                    <field name="category"/>
+                                    <field name="header_format"/>
+                                    <field name="link_mode"/>
+                                    <field name="status"
+                                           decoration-success="status == 'APPROVED'"
+                                           decoration-danger="status in ('REJECTED', 'DISABLED')"
+                                           decoration-warning="status in ('PENDING', 'PAUSED')"
+                                           widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wa_account" model="ir.actions.act_window">
+        <field name="name">WhatsApp Accounts</field>
+        <field name="res_model">wa.account</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Connect a WhatsApp number</p>
+            <p>
+                Take the Phone Number ID, WhatsApp Business Account ID and a permanent
+                System User token from the Meta App Dashboard.
+            </p>
+        </field>
+    </record>
+</odoo>

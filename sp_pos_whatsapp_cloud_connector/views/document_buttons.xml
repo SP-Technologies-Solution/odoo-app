@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_order_form_wa" model="ir.ui.view">
+        <field name="name">pos.order.form.whatsapp</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <!-- The POS form already declares a header, so append inside it. -->
+            <xpath expr="//button[@name='action_pos_order_invoice']" position="after">
+                <button name="action_send_whatsapp" type="object"
+                        string="Send on WhatsApp" icon="fa-whatsapp"
+                        groups="sp_pos_whatsapp_cloud_connector.group_wa_user"
+                        invisible="state == 'draft'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

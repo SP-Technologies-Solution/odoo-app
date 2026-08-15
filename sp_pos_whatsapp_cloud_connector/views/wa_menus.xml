@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_wa_root" name="WhatsApp"
+              groups="sp_pos_whatsapp_cloud_connector.group_wa_user" sequence="95"/>
+
+    <menuitem id="menu_wa_messages" name="Messages"
+              parent="menu_wa_root" action="action_wa_message" sequence="10"/>
+
+    <menuitem id="menu_wa_configuration" name="Configuration"
+              parent="menu_wa_root" groups="sp_pos_whatsapp_cloud_connector.group_wa_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_wa_accounts" name="Accounts"
+              parent="menu_wa_configuration" action="action_wa_account" sequence="10"/>
+
+    <menuitem id="menu_wa_templates" name="Templates"
+              parent="menu_wa_configuration" action="action_wa_template" sequence="20"/>
+</odoo>

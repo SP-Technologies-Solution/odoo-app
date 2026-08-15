@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wa_account_user,wa.account.user,model_wa_account,sp_pos_whatsapp_cloud_connector.group_wa_user,1,0,0,0
+access_wa_account_manager,wa.account.manager,model_wa_account,sp_pos_whatsapp_cloud_connector.group_wa_manager,1,1,1,1
+access_wa_template_user,wa.template.user,model_wa_template,sp_pos_whatsapp_cloud_connector.group_wa_user,1,0,0,0
+access_wa_template_manager,wa.template.manager,model_wa_template,sp_pos_whatsapp_cloud_connector.group_wa_manager,1,1,1,1
+access_wa_message_user,wa.message.user,model_wa_message,sp_pos_whatsapp_cloud_connector.group_wa_user,1,1,1,0
+access_wa_message_manager,wa.message.manager,model_wa_message,sp_pos_whatsapp_cloud_connector.group_wa_manager,1,1,1,1
+access_wa_send_wizard_user,wa.send.wizard.user,model_wa_send_wizard,sp_pos_whatsapp_cloud_connector.group_wa_user,1,1,1,1
+access_wa_template_builder_manager,wa.template.builder.manager,model_wa_template_builder,sp_pos_whatsapp_cloud_connector.group_wa_manager,1,1,1,1

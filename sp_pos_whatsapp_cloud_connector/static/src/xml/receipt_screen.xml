@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.ReceiptScreen" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('print')][1]" position="after">
+            <button class="button btn btn-lg btn-success w-100 py-3"
+                    t-on-click="() => this.actionSendReceiptOnWhatsApp()">
+                <i class="fa fa-whatsapp me-1"/>Send on WhatsApp
+            </button>
+        </xpath>
+    </t>
+</templates>
