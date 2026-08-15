@@ -91,7 +91,33 @@ sans-serif;
 
 .sp-toolbar-actions {
     display: flex;
+    align-items: center;
     gap: 8px;
+}
+
+// "All Products" toggle sitting before the Refresh button.
+// The toolbar sits on a light background, so use dark text so it stays readable.
+.sp-allproducts {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 4px 0 0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: #1a1a1a;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+
+    input {
+        cursor: pointer;
+        margin: 0;
+        accent-color: #017E84;
+    }
 }
 
 // ── Buttons ───────────────────────────────────────────────────────────────────

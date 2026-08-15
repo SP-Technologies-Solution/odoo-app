@@ -62,6 +62,9 @@ export class PosDashboard extends Component {
             session_id: false,
             config_id: false,
             company_id: false,
+            // When true, the Top Products chart shows ALL products sold in the
+            // selected period instead of just the top 10.
+            all_products: false,
         };
 
         this.state = useState({
@@ -89,6 +92,9 @@ export class PosDashboard extends Component {
             },
             topCustomers: [],
             topProducts: [],
+            // Reflects what was actually loaded (set on each fetch), so the
+            // Top Products card title stays correct until "Apply" is pressed.
+            showingAllProducts: false,
             topCategories: [],
             salesTrend: [],
             paymentMethods: [],
@@ -139,11 +145,13 @@ export class PosDashboard extends Component {
 
     async _loadData() {
         this.state.loading = true;
+        const usedAllProducts = !!this.state.filters.all_products;
         try {
             const r = await rpc("/sp_pos_dashboard/get_dashboard_data", {
                 filters: { ...this.state.filters },
             });
             Object.assign(this.state, r);
+            this.state.showingAllProducts = usedAllProducts;
         } catch (e) {
             this.notification.add("Failed to load dashboard data.", { type: "danger" });
         } finally {
@@ -152,6 +160,10 @@ export class PosDashboard extends Component {
     }
 
     // ── Filters ───────────────────────────────────────────────────────────────
+
+    onToggleAllProducts(ev) {
+        this.state.filters.all_products = ev.target.checked;
+    }
 
     onFilterChange(ev) {
         const f = ev.target.dataset.field;

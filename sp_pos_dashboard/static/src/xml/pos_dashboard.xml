@@ -39,6 +39,12 @@
             </div>
         </div>
         <div class="sp-toolbar-actions">
+            <label class="sp-allproducts" title="Show every product sold in the selected period (not just the top 10). Click Apply after changing.">
+                <input type="checkbox"
+                       t-att-checked="state.filters.all_products"
+                       t-on-change="onToggleAllProducts"/>
+                <span>All Products</span>
+            </label>
             <button class="sp-btn sp-btn--outline" t-on-click="onRefresh">
                 <i class="fa fa-refresh"/> Refresh
             </button>
@@ -191,7 +197,7 @@
             <div class="sp-card-hd">
                 <div class="sp-card-hd-left">
                     <span class="sp-dot" style="background:#875A7B"/>
-                    <span class="sp-card-title">Top 10 Products</span>
+                    <span class="sp-card-title"><t t-esc="state.showingAllProducts ? 'All Products' : 'Top 10 Products'"/></span>
                     <span class="sp-hint">click to drill-down</span>
                 </div>
                 <t t-call="sp_pos_dashboard.ChartToggle">

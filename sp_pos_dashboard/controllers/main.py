@@ -196,14 +196,14 @@ class PosDashboardController(http.Controller):
             'orders': g['partner_id_count'],
         } for g in cust_groups if g.get('partner_id')]
 
-        # ── Top 10 Products ───────────────────────────────────────────────────
+        # ── Top Products (Top 10, or ALL when the "All Products" filter is on) ─
         line_domain = [('order_id', 'in', orders.ids)] if orders else [('id', '=', False)]
         prod_groups = PosOrderLine.read_group(
             line_domain,
             ['product_id', 'qty:sum', 'price_subtotal_incl:sum'],
             ['product_id'],
             orderby='price_subtotal_incl desc',
-            limit=10,
+            limit=None if filters.get('all_products') else 10,
         )
         top_products = [{
             'name' : g['product_id'][1],
@@ -406,10 +406,12 @@ class PosDashboardController(http.Controller):
                           'total': round(g['amount_total'], 2), 'orders': g['partner_id_count']}
                          for g in cust_groups if g.get('partner_id')]
 
-        # Top products
+        # Top products (Top 10, or ALL when the "All Products" filter is on),
+        # ordered by Total Sales (price_subtotal_incl) descending — highest first.
         prod_groups = PosOrderLine.read_group(
             line_domain, ['product_id', 'qty:sum', 'price_subtotal_incl:sum'], ['product_id'],
-            orderby='price_subtotal_incl desc', limit=10,
+            orderby='price_subtotal_incl desc',
+            limit=None if filters.get('all_products') else 10,
         )
         top_products = [{'name': g['product_id'][1], 'id': g['product_id'][0],
                          'qty': round(g['qty'], 2), 'total': round(g['price_subtotal_incl'], 2)}
