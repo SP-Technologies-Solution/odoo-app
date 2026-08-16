@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="sp_pos_stock_control.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
+        <xpath expr="//article" position="inside">
+            <span t-if="spStockBadge"
+                  t-attf-class="sp-stock-badge {{ spStockBadge.out ? 'sp-stock-badge-out' : '' }}"
+                  t-esc="spStockBadge.text"/>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sp_price_history_export_wizard_view_form" model="ir.ui.view">
+        <field name="name">sp.price.history.export.wizard.form</field>
+        <field name="model">sp.price.history.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export Price History">
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group>
+                        <field name="export_format" widget="radio"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="product_ids" widget="many2many_tags"
+                           placeholder="All products"/>
+                </group>
+                <footer>
+                    <button name="action_export" type="object" string="Export"
+                            class="btn-primary" data-hotkey="q"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"
+                            data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sp_price_history_export_wizard_action" model="ir.actions.act_window">
+        <field name="name">Export Price History</field>
+        <field name="res_model">sp.price.history.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(4, ref('sp_sale_price_history.group_price_history_manager'))]"/>
+    </record>
+
+</odoo>

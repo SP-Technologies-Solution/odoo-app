@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sp_ip_access_rule,sp.ip.access.rule,model_sp_ip_access_rule,base.group_system,1,1,1,1
+access_sp_ip_access_rule_line,sp.ip.access.rule.line,model_sp_ip_access_rule_line,base.group_system,1,1,1,1
+access_sp_ip_access_rule_header,sp.ip.access.rule.header,model_sp_ip_access_rule_header,base.group_system,1,1,1,1

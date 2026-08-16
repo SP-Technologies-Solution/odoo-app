@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Off by default: honouring X-Forwarded-For without a trusted proxy
+             list lets anyone choose their own apparent IP. -->
+        <record id="sp_param_trust_forwarded_for" model="ir.config_parameter">
+            <field name="key">sp_ip_access.trust_forwarded_for</field>
+            <field name="value">0</field>
+        </record>
+
+        <!-- Comma-separated IP/CIDR list of proxies whose X-Forwarded-For is
+             believed, e.g. 10.0.0.0/8,172.16.0.0/12 -->
+        <record id="sp_param_trusted_proxies" model="ir.config_parameter">
+            <field name="key">sp_ip_access.trusted_proxies</field>
+            <field name="value"></field>
+        </record>
+
+        <!-- 0 = an error inside the check lets the request through (logged);
+             1 = an error denies the request. -->
+        <record id="sp_param_fail_closed" model="ir.config_parameter">
+            <field name="key">sp_ip_access.fail_closed</field>
+            <field name="value">0</field>
+        </record>
+
+        <!-- 1 disables the self-lockout guard on rule save. -->
+        <record id="sp_param_allow_lockout" model="ir.config_parameter">
+            <field name="key">sp_ip_access.allow_lockout</field>
+            <field name="value">0</field>
+        </record>
+
+    </data>
+</odoo>

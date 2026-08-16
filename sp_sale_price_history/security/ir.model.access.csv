@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sp_price_history_log_user,sp.price.history.log.user,model_sp_price_history_log,sp_sale_price_history.group_price_history_user,1,0,0,0
+access_sp_price_history_log_manager,sp.price.history.log.manager,model_sp_price_history_log,sp_sale_price_history.group_price_history_manager,1,1,1,1
+access_sp_price_history_export_wizard,sp.price.history.export.wizard,model_sp_price_history_export_wizard,sp_sale_price_history.group_price_history_manager,1,1,1,1

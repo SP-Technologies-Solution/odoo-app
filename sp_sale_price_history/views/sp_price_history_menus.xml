@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="sp_price_history_menu_root"
+              name="Price History"
+              groups="sp_sale_price_history.group_price_history_user"
+              sequence="95"/>
+
+    <menuitem id="sp_price_history_menu_dashboard"
+              name="Dashboard"
+              parent="sp_price_history_menu_root"
+              action="sp_price_history_dashboard_action"
+              sequence="10"/>
+
+    <menuitem id="sp_price_history_menu_changes"
+              name="Price Changes"
+              parent="sp_price_history_menu_root"
+              action="sp_price_history_log_action"
+              sequence="20"/>
+
+    <menuitem id="sp_price_history_menu_export"
+              name="Export"
+              parent="sp_price_history_menu_root"
+              action="sp_price_history_export_wizard_action"
+              groups="sp_sale_price_history.group_price_history_manager"
+              sequence="30"/>
+
+</odoo>

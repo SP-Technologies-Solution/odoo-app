@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="module_category_price_history" model="ir.module.category">
+            <field name="name">Price History</field>
+            <field name="description">Access to the sales price change audit trail.</field>
+            <field name="sequence">55</field>
+        </record>
+
+        <record id="group_price_history_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_category_price_history"/>
+            <field name="comment">Read the price history and the dashboard.</field>
+        </record>
+
+        <record id="group_price_history_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_price_history"/>
+            <field name="implied_ids" eval="[(4, ref('group_price_history_user'))]"/>
+            <field name="comment">Delete price history entries and run exports.</field>
+        </record>
+
+        <record id="sp_price_history_log_company_rule" model="ir.rule">
+            <field name="name">Price history: current companies</field>
+            <field name="model_id" ref="model_sp_price_history_log"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

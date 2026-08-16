@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SP Sales Price Change History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body style="margin:0; font-family:'Segoe UI',Helvetica,Arial,sans-serif; color:#241a2b; background-color:#faf7fb;">
+<div class="container" style="display:contents;">
+
+    <!-- ══════════ HERO ══════════ -->
+    <div class="container py-5">
+        <div class="overflow-hidden shadow-lg" style="border-radius:24px; background-color:#6f5591; background-image:linear-gradient(125deg,#8E4585 0%,#6f5591 46%,#2E7C8F 100%);">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-7 p-5">
+                    <div class="d-inline-block mb-3" style="background-color:#ffffff; border-radius:999px; padding:6px 18px;">
+                        <span style="font-size:13px; font-weight:700; color:#8E4585; letter-spacing:0.04em;">SP TECHNOLOGIES SOLUTION</span>
+                    </div>
+                    <h1 class="fw-bold mb-3" style="font-size:46px; line-height:1.08; color:#ffffff;">
+                        Sales Price<br>
+                        <span style="color:#a8f0bf;">Change History</span>
+                    </h1>
+                    <p class="mb-4" style="font-size:18px; line-height:1.75; color:#ffffff; opacity:0.95; max-width:560px;">
+                        Every change to a product's <b>Sales Price</b> is written to an <b>append-only audit log</b> —
+                        automatically, with no manual step. See old vs new price, the difference and percentage, plus a
+                        KPI dashboard and one-click <b>PDF / XLSX</b> exports.
+                    </p>
+                    <div>
+                        <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26);">Community</span>
+                        <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26);">Enterprise</span>
+                        <span class="d-inline-block mb-2 me-2" style="font-size:13px; font-weight:600; color:#ffffff; padding:8px 16px; border-radius:999px; background-color:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.26);">Audit Ready</span>
+                    </div>
+                </div>
+                <div class="col-lg-5 p-4 p-lg-5">
+                    <div class="text-center mb-3">
+                        <img src="icon.png" alt="App icon" style="width:78px; height:78px; border-radius:18px;">
+                    </div>
+                    <div class="p-3 mb-3" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
+                        <div class="fw-bold mb-1" style="color:#ffffff;">🕒 Automatic Tracking</div>
+                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Logged by the price-change hook — no manual entry, and never when the price didn't move.</div>
+                    </div>
+                    <div class="p-3 mb-3" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
+                        <div class="fw-bold mb-1" style="color:#ffffff;">📊 KPI Dashboard</div>
+                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Total changes, products updated, largest increase and largest decrease at a glance.</div>
+                    </div>
+                    <div class="p-3" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
+                        <div class="fw-bold mb-1" style="color:#ffffff;">📤 PDF &amp; XLSX Export</div>
+                        <div style="font-size:14px; color:#ffffff; opacity:0.9;">Export any date range to a clean PDF or Excel file for review or sharing.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════ WHY / FEATURES ══════════ -->
+    <div class="container pb-4">
+        <div class="text-center mb-4">
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Why You'll Love It</div>
+            <h2 class="fw-bold mt-2 mb-3" style="font-size:40px; line-height:1.15; color:#241a2b;">Never lose track of a price change again.</h2>
+            <p class="mx-auto mb-0" style="max-width:840px; color:#5b6473; font-size:17px; line-height:1.8;">
+                A complete, tamper-resistant history of every sales-price change — captured automatically, summarised
+                on a dashboard, and exportable in a click. Perfect for pricing reviews, audits and accountability.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-xl-4">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🕒</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Automatic Audit Log</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Every sales-price change is recorded automatically — no manual step, and nothing is logged if the price didn't actually move.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🧾</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Full Change Detail</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Old price, new price, the difference and percentage, plus date, user, company and currency — captured on every entry.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">📦</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Right on the Product</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">A Price History smart button, plus Previous Price and Last Price Change fields, live on every product form.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">📊</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">KPI Dashboard</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Total changes, products updated, largest increase and largest decrease — the pricing picture at a glance.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">📤</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">PDF &amp; XLSX Export</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">Export a date range to a formatted PDF or an Excel workbook — ready for review, sign-off or the auditor.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="d-inline-flex align-items-center justify-content-center mb-3" style="width:52px; height:52px; border-radius:14px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#ffffff; font-size:24px;">🔒</div>
+                    <h3 class="fw-bold" style="font-size:18px; color:#241a2b;">Append-Only &amp; Secure</h3>
+                    <p class="mb-0" style="color:#5b6473; font-size:14.5px; line-height:1.65;">The log is written only by the price-change hook — and only a Price History Manager can delete an entry.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════ KEY FEATURES + STEPS ══════════ -->
+    <div class="container pb-4">
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="mb-3" style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Key Features</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Automatic</b> logging of every Sales Price change — zero manual effort.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Captures <b>old &amp; new price, difference, percentage, date, user, company, currency</b>.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Price History smart button</b>, plus Previous Price &amp; Last Price Change on the product.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>KPI dashboard</b>: total changes, products updated, largest increase &amp; decrease.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Audit list</b> with date, increase/decrease and grouping filters.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Export any date range to <b>PDF or XLSX</b>.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; <b>Append-only</b> — written only by the hook; deletions restricted to a Manager.</div>
+                    <div style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Lightweight — depends only on <b>Product</b> and <b>Discuss</b>.</div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="h-100 shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="mb-3" style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">How It Works</div>
+                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">1</div><div style="color:#444; font-size:15px; line-height:1.65;">Install — tracking starts <b>immediately</b>, no configuration needed.</div></div>
+                    <div class="d-flex mb-3" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">2</div><div style="color:#444; font-size:15px; line-height:1.65;">Change a product's <b>Sales Price</b> — a history entry is written automatically.</div></div>
+                    <div class="d-flex" style="gap:14px;"><div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:34px; height:34px; border-radius:50%; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:14px;">3</div><div style="color:#444; font-size:15px; line-height:1.65;">Open the <b>Price History</b> dashboard to review, filter, and <b>export</b>. Done!</div></div>
+
+                    <div class="mt-4 p-3" style="background-color:#f7f2f8; border-radius:12px;">
+                        <div class="fw-bold mb-1" style="color:#8E4585; font-size:14px;">Zero-noise logging</div>
+                        <div style="color:#5b6473; font-size:13.5px; line-height:1.6;">Nothing is recorded when a save doesn't actually change the price — your log stays clean.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════ SCREENSHOTS (SINGLE COLUMN) ══════════ -->
+    <div class="container pb-4">
+        <div class="text-center mb-4">
+            <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">A Guided Tour</div>
+            <h2 class="fw-bold mt-2" style="font-size:40px; line-height:1.15; color:#241a2b;">Every price change, captured and visible.</h2>
+        </div>
+
+        <div class="row g-4">
+            <!-- shot 1 -->
+            <div class="col-12">
+                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
+                    <div class="d-flex align-items-center mb-2" style="gap:14px;">
+                        <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">1</div>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">Grant Price History Access</h3>
+                    </div>
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Give each user a <b>Price History</b> role on their access rights — <b>User</b> to view the log, <b>Manager</b> to also delete entries.</p>
+                    <img src="image_1.png" alt="Price History access rights on a user" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                </div>
+            </div>
+            <!-- shot 2 (video) -->
+            <div class="col-12">
+                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
+                    <div class="d-flex align-items-center mb-2" style="gap:14px;">
+                        <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">2</div>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">See It in Action</h3>
+                    </div>
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">Watch a price change get captured automatically and appear in the history — start to finish.</p>
+                    <img src="video.gif" alt="Sales price change history in action" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                </div>
+            </div>
+            <!-- shot 3 -->
+            <div class="col-12">
+                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
+                    <div class="d-flex align-items-center mb-2" style="gap:14px;">
+                        <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">3</div>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">See It on the Product</h3>
+                    </div>
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">A <b>Price Changes</b> smart button counts every change, and the <b>previous price</b> and <b>last-change date</b> sit right under the Sales Price.</p>
+                    <img src="image_2.png" alt="Price Changes smart button and previous price on the product form" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                </div>
+            </div>
+            <!-- shot 4 -->
+            <div class="col-12">
+                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:18px;">
+                    <div class="d-flex align-items-center mb-2" style="gap:14px;">
+                        <div class="flex-shrink-0 d-flex align-items-center justify-content-center fw-bold" style="width:40px; height:40px; border-radius:12px; background-color:#8E4585; background-image:linear-gradient(135deg,#8E4585,#2E7C8F); color:#fff; font-size:16px;">4</div>
+                        <h3 class="fw-bold mb-0" style="font-size:20px; color:#241a2b;">A Colour-Coded Audit Trail</h3>
+                    </div>
+                    <p style="color:#5b6473; font-size:15px; line-height:1.7;">The audit list shows <b>old price, new price, difference, percentage</b> and who changed it — increases in green, decreases in red — filterable and exportable.</p>
+                    <img src="image_3.png" alt="Price History audit list with old/new price, difference and percentage" class="img-fluid w-100" style="border-radius:10px; border:1px solid #ececf1;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════ USE CASES ══════════ -->
+    <div class="container pb-4">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-5">
+                <div style="font-size:12px; font-weight:700; letter-spacing:0.16em; color:#9B5EA2; text-transform:uppercase;">Where It Shines</div>
+                <h2 class="fw-bold mt-2 mb-3" style="font-size:34px; line-height:1.15; color:#241a2b;">Pricing accountability, made effortless.</h2>
+                <p class="mb-0" style="color:#5b6473; font-size:17px; line-height:1.8;">Know exactly who changed which price, when, and by how much — without chasing anyone.</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="shadow-sm p-4" style="background-color:#ffffff; border:1px solid rgba(142,69,133,0.14); border-radius:16px;">
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Review pricing decisions with a clear before/after trail.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Give auditors a ready-made PDF or Excel of every change.</div>
+                    <div class="mb-2" style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Spot the biggest increases and decreases across your catalogue.</div>
+                    <div style="color:#444; font-size:15px; line-height:1.6;"><span style="color:#128C3E; font-weight:800;">✓</span>&nbsp; Hold the team accountable with a per-user, per-product record.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════ CONTACT / CTA ══════════ -->
+    <div class="container py-4">
+        <div class="p-4 p-lg-5 shadow-sm" style="border-radius:24px; background-color:#6f5591; background-image:linear-gradient(125deg,#8E4585 0%,#6f5591 46%,#2E7C8F 100%);">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <h3 class="fw-bold mb-3" style="font-size:32px; color:#ffffff;">Delivered by SP Technologies Solution</h3>
+                    <p class="mb-4" style="color:#ffffff; line-height:1.9; opacity:0.95;">Need cost-price history, approval on price changes, or the same audit trail on other fields? We build Odoo modules, dashboards, integrations and long-term support. Reach out anytime.</p>
+                    <a href="https://www.sptechnologiessolution.com/contactus" target="_blank" rel="noopener noreferrer" style="display:inline-block; background-color:#ffffff; color:#8E4585; font-weight:700; text-decoration:none; padding:12px 30px; border-radius:999px; font-size:15px;">Let's Talk →</a>
+                </div>
+                <div class="col-lg-5">
+                    <div class="text-center p-4" style="background-color:#ffffff; border-radius:16px;">
+                        <img src="logo.png" alt="SP Technologies Solution" class="img-fluid" style="max-width:230px; margin-bottom:10px;">
+                        <p class="mb-0" style="color:#5b6473; line-height:1.7; font-size:14.5px;">Odoo consulting, implementation, customization and integration for growing businesses.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-3 mt-1">
+                <div class="col-md-4">
+                    <div class="p-3 text-center h-100" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
+                        <div style="font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#ffffff; opacity:0.85;">📧 Email Us</div>
+                        <a href="mailto:contact@sptechnologiessolution.com" style="color:#ffffff; text-decoration:none; font-weight:600; font-size:14px; word-break:break-word;">contact@sptechnologiessolution.com</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 text-center h-100" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
+                        <div style="font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#ffffff; opacity:0.85;">🌐 Website</div>
+                        <a href="https://www.sptechnologiessolution.com" target="_blank" rel="noopener noreferrer" style="color:#ffffff; text-decoration:none; font-weight:600; font-size:14px;">www.sptechnologiessolution.com</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 text-center h-100" style="background-color:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:14px;">
+                        <div style="font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:#ffffff; opacity:0.85;">📱 WhatsApp</div>
+                        <a href="https://wa.me/919265717998" target="_blank" rel="noopener noreferrer" style="color:#ffffff; text-decoration:none; font-weight:600; font-size:14px;">+91 92657 17998</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

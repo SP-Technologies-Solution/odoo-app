@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="sp_price_history_report_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="wizard">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Sales Price Changes</h2>
+                        <p>
+                            <strong>Period:</strong>
+                            <span t-field="wizard.date_from"/> &amp;#8212;
+                            <span t-field="wizard.date_to"/>
+                        </p>
+                        <p t-if="wizard.product_ids">
+                            <strong>Products:</strong>
+                            <span t-esc="', '.join(wizard.product_ids.mapped('display_name'))"/>
+                        </p>
+                        <t t-set="lines" t-value="wizard.get_lines()"/>
+                        <table class="table table-sm o_main_table" t-if="lines">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Product</th>
+                                    <th class="text-end">Old Price</th>
+                                    <th class="text-end">New Price</th>
+                                    <th class="text-end">Difference</th>
+                                    <th class="text-end">Change</th>
+                                    <th>Changed By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="lines" t-as="line">
+                                    <td><span t-field="line.change_date"/></td>
+                                    <td><span t-field="line.product_tmpl_id"/></td>
+                                    <td class="text-end"><span t-field="line.old_price"/></td>
+                                    <td class="text-end"><span t-field="line.new_price"/></td>
+                                    <td class="text-end"><span t-field="line.price_diff"/></td>
+                                    <td class="text-end">
+                                        <span t-esc="'%.2f%%' % line.price_diff_percent"/>
+                                    </td>
+                                    <td><span t-field="line.user_id"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p t-else="">No price change was recorded in this period.</p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

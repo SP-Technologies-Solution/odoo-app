@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sp_ip_access_rule_action" model="ir.actions.act_window">
+        <field name="name">IP Access Rules</field>
+        <field name="res_model">sp.ip.access.rule</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first IP access rule</p>
+            <p>
+                Rules are checked in sequence order and the first one whose route
+                matches decides the request. Routes that match no rule are left
+                alone, so this is an opt-in restriction rather than a firewall.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="sp_ip_access_rule_menu"
+              name="IP Access Rules"
+              parent="base.menu_custom"
+              action="sp_ip_access_rule_action"
+              groups="base.group_system"
+              sequence="95"/>
+
+</odoo>

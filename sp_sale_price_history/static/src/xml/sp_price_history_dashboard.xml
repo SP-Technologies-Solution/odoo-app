@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="sp_sale_price_history.Dashboard">
+        <div class="o_sp_price_dashboard o_action p-4">
+            <h2 class="mb-4">Sales Price Changes</h2>
+
+            <div t-if="state.loading" class="text-muted">Loading...</div>
+
+            <div t-else="" class="o_sp_price_tiles">
+                <div class="o_sp_price_tile" t-on-click="() => this.openChanges()">
+                    <div class="o_sp_price_tile_label">Total Price Changes</div>
+                    <div class="o_sp_price_tile_value" t-esc="state.data.total_changes"/>
+                </div>
+
+                <div class="o_sp_price_tile" t-on-click="() => this.openChanges({ search_default_group_by_product: 1 })">
+                    <div class="o_sp_price_tile_label">Products Updated</div>
+                    <div class="o_sp_price_tile_value" t-esc="state.data.products_updated"/>
+                </div>
+
+                <div class="o_sp_price_tile o_sp_price_up" t-on-click="() => this.openChanges({ search_default_filter_increase: 1 })">
+                    <div class="o_sp_price_tile_label">Largest Increase</div>
+                    <div class="o_sp_price_tile_value">
+                        <t t-esc="state.data.highest_increase.currency"/>
+                        <t t-esc="state.data.highest_increase.amount"/>
+                    </div>
+                    <div class="o_sp_price_tile_sub" t-esc="state.data.highest_increase.product"/>
+                </div>
+
+                <div class="o_sp_price_tile o_sp_price_down" t-on-click="() => this.openChanges({ search_default_filter_decrease: 1 })">
+                    <div class="o_sp_price_tile_label">Largest Decrease</div>
+                    <div class="o_sp_price_tile_value">
+                        <t t-esc="state.data.highest_decrease.currency"/>
+                        <t t-esc="state.data.highest_decrease.amount"/>
+                    </div>
+                    <div class="o_sp_price_tile_sub" t-esc="state.data.highest_decrease.product"/>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

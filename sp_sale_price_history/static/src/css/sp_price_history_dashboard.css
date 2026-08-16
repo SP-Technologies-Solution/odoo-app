@@ -1,0 +1,50 @@
+.o_sp_price_dashboard .o_sp_price_tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.o_sp_price_dashboard .o_sp_price_tile {
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.o_sp_price_dashboard .o_sp_price_tile:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.o_sp_price_dashboard .o_sp_price_tile_label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6c757d;
+}
+
+.o_sp_price_dashboard .o_sp_price_tile_value {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 6px;
+}
+
+.o_sp_price_dashboard .o_sp_price_tile_sub {
+    font-size: 13px;
+    color: #6c757d;
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.o_sp_price_dashboard .o_sp_price_up .o_sp_price_tile_value {
+    color: #1d6f42;
+}
+
+.o_sp_price_dashboard .o_sp_price_down .o_sp_price_tile_value {
+    color: #a32d22;
+}

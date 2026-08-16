@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sp_ip_access_rule_view_list" model="ir.ui.view">
+        <field name="name">sp.ip.access.rule.list</field>
+        <field name="model">sp.ip.access.rule</field>
+        <field name="arch" type="xml">
+            <list string="IP Access Rules">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="route"/>
+                <field name="route_match_type"/>
+                <field name="restriction_method"/>
+                <field name="match_full_url" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="sp_ip_access_rule_view_form" model="ir.ui.view">
+        <field name="name">sp.ip.access.rule.form</field>
+        <field name="model">sp.ip.access.rule</field>
+        <field name="arch" type="xml">
+            <form string="IP Access Rule">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger"
+                            invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Office only on /web/database"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="route" placeholder="/web/database"/>
+                            <field name="route_match_type"/>
+                            <field name="match_full_url"/>
+                        </group>
+                        <group>
+                            <field name="restriction_method" widget="radio"/>
+                            <field name="sequence"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="IP List" name="ip_list">
+                            <field name="ip_line_ids">
+                                <list editable="bottom">
+                                    <field name="ip_value"/>
+                                    <field name="subnet_mask"/>
+                                </list>
+                            </field>
+                            <p class="text-muted">
+                                Enter a single address, CIDR notation such as 173.245.48.0/20,
+                                or a network address with a subnet mask. IPv4 and IPv6 both work.
+                            </p>
+                        </page>
+                        <page string="Header Conditions" name="header_conditions">
+                            <field name="header_line_ids">
+                                <list editable="bottom">
+                                    <field name="header_key"/>
+                                    <field name="header_value"/>
+                                </list>
+                            </field>
+                            <p class="text-muted">
+                                Optional. Every condition listed here must hold for this rule to
+                                apply at all; if one does not, evaluation moves on to the next
+                                rule. Leave the expected value empty to require only that the
+                                header is present.
+                            </p>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="sp_ip_access_rule_view_search" model="ir.ui.view">
+        <field name="name">sp.ip.access.rule.search</field>
+        <field name="model">sp.ip.access.rule</field>
+        <field name="arch" type="xml">
+            <search string="IP Access Rules">
+                <field name="name"/>
+                <field name="route"/>
+                <filter name="filter_allow" string="Allow Only Listed"
+                        domain="[('restriction_method', '=', 'allow_listed')]"/>
+                <filter name="filter_deny" string="Deny Listed"
+                        domain="[('restriction_method', '=', 'deny_listed')]"/>
+                <separator/>
+                <filter name="filter_inactive" string="Archived"
+                        domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_method" string="Restriction Method"
+                            context="{'group_by': 'restriction_method'}"/>
+                    <filter name="group_match" string="Route Matching"
+                            context="{'group_by': 'route_match_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sp_price_history_log_view_list" model="ir.ui.view">
+        <field name="name">sp.price.history.log.list</field>
+        <field name="model">sp.price.history.log</field>
+        <field name="arch" type="xml">
+            <list string="Price Changes" create="0" delete="0"
+                  decoration-success="price_diff &gt; 0" decoration-danger="price_diff &lt; 0">
+                <field name="change_date"/>
+                <field name="product_tmpl_id"/>
+                <field name="old_price"/>
+                <field name="new_price"/>
+                <field name="price_diff" sum="Total Difference"/>
+                <field name="price_diff_percent"/>
+                <field name="user_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="sp_price_history_log_view_form" model="ir.ui.view">
+        <field name="name">sp.price.history.log.form</field>
+        <field name="model">sp.price.history.log</field>
+        <field name="arch" type="xml">
+            <form string="Price Change" create="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_tmpl_id" readonly="1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="change_date" readonly="1"/>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="old_price" readonly="1"/>
+                            <field name="new_price" readonly="1"/>
+                            <field name="price_diff" readonly="1"/>
+                            <field name="price_diff_percent" readonly="1"/>
+                            <field name="company_id" readonly="1"
+                                   groups="base.group_multi_company"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Note">
+                        <field name="note" nolabel="1"
+                               placeholder="Only this note can be edited."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sp_price_history_log_view_search" model="ir.ui.view">
+        <field name="name">sp.price.history.log.search</field>
+        <field name="model">sp.price.history.log</field>
+        <field name="arch" type="xml">
+            <search string="Price Changes">
+                <field name="product_tmpl_id"/>
+                <field name="user_id"/>
+                <filter name="filter_today" string="Today"
+                        domain="[('change_date', '&gt;=', datetime.datetime.combine(context_today(), datetime.time(0, 0, 0)).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+                <filter name="filter_this_week" string="This Week"
+                        domain="[('change_date', '&gt;=', (context_today() + relativedelta(weeks=-1, weekday=0)).strftime('%Y-%m-%d 00:00:00'))]"/>
+                <filter name="filter_this_month" string="This Month"
+                        domain="[('change_date', '&gt;=', (context_today() + relativedelta(day=1)).strftime('%Y-%m-%d 00:00:00'))]"/>
+                <filter name="filter_this_year" string="This Year"
+                        domain="[('change_date', '&gt;=', (context_today() + relativedelta(month=1, day=1)).strftime('%Y-%m-%d 00:00:00'))]"/>
+                <separator/>
+                <filter name="filter_increase" string="Price Increases"
+                        domain="[('price_diff', '&gt;', 0)]"/>
+                <filter name="filter_decrease" string="Price Decreases"
+                        domain="[('price_diff', '&lt;', 0)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_product" string="Product"
+                            context="{'group_by': 'product_tmpl_id'}"/>
+                    <filter name="group_by_user" string="Changed By"
+                            context="{'group_by': 'user_id'}"/>
+                    <filter name="group_by_company" string="Company"
+                            context="{'group_by': 'company_id'}"
+                            groups="base.group_multi_company"/>
+                    <filter name="group_by_month" string="Month"
+                            context="{'group_by': 'change_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="sp_price_history_log_action" model="ir.actions.act_window">
+        <field name="name">Price Changes</field>
+        <field name="res_model">sp.price.history.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_filter_this_month': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No price change recorded yet</p>
+            <p>
+                Entries appear here on their own the moment a product's sales
+                price is saved with a different value.
+            </p>
+        </field>
+    </record>
+
+    <record id="sp_price_history_dashboard_action" model="ir.actions.client">
+        <field name="name">Price History Dashboard</field>
+        <field name="tag">sp_price_history_dashboard</field>
+    </record>
+
+</odoo>
