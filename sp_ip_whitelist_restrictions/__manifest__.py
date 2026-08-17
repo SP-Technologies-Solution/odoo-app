@@ -31,6 +31,7 @@ Configure from Settings > Technical > IP Access Rules.
     'application': False,
     'auto_install': False,
     'license': 'LGPL-3',
+    'images': ['static/description/banner.png'],
     'price': 35.00,
     'currency': 'USD',
 }

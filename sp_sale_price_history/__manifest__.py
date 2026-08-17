@@ -42,6 +42,7 @@ manual step and no record when the price did not actually move.
     'application': True,
     'auto_install': False,
     'license': 'LGPL-3',
+    'images': ['static/description/banner.png'],
     'price': 7.00,
     'currency': 'USD',
 }
