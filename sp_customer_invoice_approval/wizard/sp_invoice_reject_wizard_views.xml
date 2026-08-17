@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sp_invoice_reject_wizard_view_form" model="ir.ui.view">
+        <field name="name">sp.invoice.reject.wizard.form</field>
+        <field name="model">sp.invoice.reject.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reject Invoice">
+                <field name="move_id" invisible="1"/>
+                <group>
+                    <field name="reason" nolabel="1" colspan="2"
+                           placeholder="Why is this invoice being rejected?"/>
+                </group>
+                <footer>
+                    <button name="action_confirm" type="object" string="Confirm Rejection"
+                            class="btn-primary" data-hotkey="q"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"
+                            data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

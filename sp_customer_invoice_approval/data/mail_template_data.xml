@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="sp_mail_template_invoice_approved" model="mail.template">
+            <field name="name">Invoice: approved and posted</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="subject">Your invoice {{ object.name }} from {{ object.company_id.name }}</field>
+            <field name="email_from">{{ (object.invoice_user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+<div style="margin:0px;padding:0px;font-size:13px;">
+    <p>Hello <t t-out="object.partner_id.name or ''">Customer</t>,</p>
+    <p>
+        Your invoice <strong t-out="object.name or ''">INV/0001</strong>
+        has been approved and issued<t t-if="object.invoice_date_due">,
+        and is due on <strong t-out="format_date(object.invoice_date_due) or ''">due date</strong></t>.
+    </p>
+    <p>
+        Amount due:
+        <strong t-out="format_amount(object.amount_total, object.currency_id) or ''">0.00</strong>
+    </p>
+    <p>Please get in touch if anything looks wrong.</p>
+    <p>
+        Kind regards,<br/>
+        <t t-out="object.company_id.name or ''">Company</t>
+    </p>
+</div>
+            </field>
+        </record>
+
+    </data>
+</odoo>

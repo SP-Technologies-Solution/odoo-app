@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_sp_approval" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sp.invoice.approval</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='account']" position="inside">
+                <block title="Invoice Approval" name="sp_customer_invoice_approval_block">
+                    <setting string="Invoice Approvers" company_dependent="1"
+                             help="Customer invoices must be approved by one of these users before they can be posted. Leave empty to switch the workflow off.">
+                        <field name="sp_invoice_approver_ids" widget="many2many_tags"/>
+                    </setting>
+                    <setting string="Notify Customer" company_dependent="1"
+                             help="E-mail the customer once an approved invoice is posted">
+                        <field name="sp_notify_customer_on_approval"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="sp_mail_activity_type_invoice_approval" model="mail.activity.type">
+            <field name="name">Invoice Approval</field>
+            <field name="summary">Approve or reject this invoice</field>
+            <field name="icon">fa-gavel</field>
+            <field name="res_model">account.move</field>
+            <field name="delay_count">2</field>
+            <field name="delay_unit">days</field>
+            <field name="delay_from">current_date</field>
+            <field name="sequence">20</field>
+        </record>
+
+    </data>
+</odoo>
