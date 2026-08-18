@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="sp_list_view_advanced_search.Many2XFilterInput">
+        <div class="o_sp_cf_m2x position-relative flex-grow-1">
+            <div t-if="props.value.length" class="o_sp_cf_tags d-flex flex-wrap gap-1 mb-1">
+                <span t-foreach="props.value" t-as="rec" t-key="rec.id"
+                      class="badge o_sp_cf_tag d-inline-flex align-items-center gap-1">
+                    <span t-esc="rec.display_name"/>
+                    <i class="fa fa-times o_sp_cf_tag_remove" role="button"
+                       t-on-click="() => this.remove(rec)"/>
+                </span>
+            </div>
+            <input type="text" class="form-control form-control-sm"
+                   placeholder="Search…"
+                   t-att-value="state.query"
+                   t-on-input="onInput"
+                   t-on-focus="onFocus"
+                   t-on-blur="onBlur"/>
+            <div t-if="state.open and state.results.length"
+                 class="o_sp_cf_m2x_results dropdown-menu show w-100">
+                <a t-foreach="state.results" t-as="rec" t-key="rec.id"
+                   class="dropdown-item o_sp_cf_m2x_item text-truncate"
+                   href="#"
+                   t-on-mousedown.prevent="() => this.pick(rec)"
+                   t-esc="rec.display_name"/>
+            </div>
+        </div>
+    </t>
+
+</templates>

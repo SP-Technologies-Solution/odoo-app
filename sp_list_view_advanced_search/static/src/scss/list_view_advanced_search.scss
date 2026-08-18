@@ -1,0 +1,243 @@
+// SP Technologies Solution — Advanced Column Filters for List Views
+
+// ---- Header funnel icon ----------------------------------------------------
+.o_list_table thead th .o_sp_column_filter_icon {
+    cursor: pointer;
+    color: var(--gray-500, #9e9e9e);
+    opacity: 0.5; // always visible so it's discoverable; brightens on hover
+    transition: opacity 0.12s ease, color 0.12s ease;
+    font-size: 0.8em;
+    flex: 0 0 auto;
+
+    &:hover {
+        color: $sp-accent;
+        opacity: 1;
+    }
+
+    &.o_sp_column_filter_active {
+        color: $sp-accent;
+        opacity: 1;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            right: -3px;
+            width: $sp-badge-size;
+            height: $sp-badge-size;
+            border-radius: 50%;
+            background: $sp-gradient;
+            box-shadow: 0 0 0 2px var(--o-list-header-bg, var(--table-bg, #fff));
+        }
+    }
+}
+
+.o_list_table thead th:hover .o_sp_column_filter_icon,
+.o_list_table thead th .o_sp_column_filter_icon.o_sp_column_filter_active {
+    opacity: 1;
+}
+
+// ---- Popover ---------------------------------------------------------------
+.o_sp_column_filter_popover {
+    .o-popover, // popover service wraps content; keep radius consistent
+    &.o-popover {
+        border-radius: 10px;
+    }
+}
+
+.o_sp_cf_popover {
+    width: 320px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+
+    // Branded gradient header
+    .o_sp_cf_header {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.6rem 0.85rem;
+        color: #fff;
+        background: $sp-gradient;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
+        .fa-filter {
+            opacity: 0.9;
+        }
+        .o_sp_cf_title {
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+    }
+
+    .o_sp_cf_body {
+        padding: 0.75rem 0.85rem 0.5rem;
+    }
+
+    // ---- One condition ----
+    .o_sp_cf_conditions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .o_sp_cf_condition {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.55rem 0.6rem;
+        border: 1px solid var(--border-color, #dee2e6);
+        border-left: 3px solid $sp-accent;
+        border-radius: 6px;
+        background: var(--o-view-background-color, rgba(127, 127, 127, 0.04));
+
+        .o_sp_cf_field,
+        .o_sp_cf_grow {
+            width: 100%;
+        }
+
+        .o_sp_cf_row {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .o_sp_cf_grow {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        .o_sp_cf_operator_narrow {
+            flex: 0 0 auto;
+            width: 92px;
+        }
+        .o_sp_cf_sep {
+            color: var(--text-muted, #888);
+        }
+        .o_sp_cf_range_label {
+            flex: 0 0 36px;
+            color: var(--text-muted, #888);
+            font-size: 0.78rem;
+        }
+
+        .o_sp_cf_remove {
+            position: absolute;
+            top: 0.15rem;
+            right: 0.15rem;
+            padding: 0 0.3rem;
+            line-height: 1.4;
+            color: var(--text-muted, #999);
+            border: 0;
+            background: transparent;
+            z-index: 1;
+            &:hover {
+                color: var(--danger, #d9534f);
+            }
+        }
+    }
+
+    // Boolean tri-state
+    .o_sp_cf_bool .o_sp_cf_bool_active {
+        color: #fff;
+        background: $sp-accent;
+        border-color: $sp-accent;
+    }
+
+    // Selection multi-check
+    .o_sp_cf_selection {
+        max-height: 200px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+
+        .o_sp_cf_check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0.2rem 0.3rem;
+            cursor: pointer;
+            border-radius: 4px;
+            &:hover {
+                background: $sp-accent-soft;
+            }
+        }
+    }
+
+    .o_sp_cf_add {
+        margin-top: 0.5rem;
+        padding: 0.1rem 0.2rem;
+        color: $sp-interactive;
+        text-decoration: none;
+        font-weight: 500;
+        border: 0;
+        background: transparent;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    // ---- Footer ----
+    .o_sp_cf_footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.55rem 0.85rem;
+        border-top: 1px solid var(--border-color, #dee2e6);
+
+        .o_sp_cf_clear {
+            padding: 0;
+            color: var(--text-muted, #888);
+            border: 0;
+            background: transparent;
+            &:hover {
+                color: var(--body-color, inherit);
+                text-decoration: underline;
+            }
+        }
+
+        .o_sp_cf_apply {
+            color: #fff;
+            font-weight: 600;
+            padding: 0.25rem 1rem;
+            border: 0;
+            border-radius: 5px;
+            background: $sp-gradient;
+            box-shadow: 0 1px 3px rgba(11, 114, 133, 0.35);
+            transition: filter 0.12s ease, opacity 0.12s ease;
+            &:hover:not(:disabled) {
+                filter: brightness(1.07);
+            }
+            &:disabled {
+                opacity: 0.5;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+// ---- many2one / many2many autocomplete -------------------------------------
+.o_sp_cf_m2x {
+    .o_sp_cf_tag {
+        background: $sp-accent-soft;
+        color: $sp-accent;
+        font-weight: 500;
+
+        .o_sp_cf_tag_remove {
+            cursor: pointer;
+            opacity: 0.7;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .o_sp_cf_m2x_results {
+        position: absolute;
+        z-index: 1060;
+        max-height: 220px;
+        overflow-y: auto;
+    }
+}

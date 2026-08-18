@@ -1,0 +1,8 @@
+// SP Technologies Solution — Advanced Column Filters palette.
+// Kept in its own file so the accent can be re-themed per client without
+// touching component styles.
+$sp-accent: #0b7285; // primary (teal)
+$sp-interactive: #1971c2; // interactive / links (indigo-blue)
+$sp-accent-soft: rgba(11, 114, 133, 0.14);
+$sp-gradient: linear-gradient(135deg, #0b7285 0%, #1971c2 100%);
+$sp-badge-size: 7px;

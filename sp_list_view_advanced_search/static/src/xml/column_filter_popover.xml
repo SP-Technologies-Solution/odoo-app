@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="sp_list_view_advanced_search.ColumnFilterPopover">
+        <div class="o_sp_cf_popover">
+            <div class="o_sp_cf_header">
+                <i class="fa fa-filter me-2"/>
+                <span class="o_sp_cf_title text-truncate" t-esc="props.label"/>
+            </div>
+
+            <div class="o_sp_cf_body">
+                <div class="o_sp_cf_conditions">
+                    <div t-foreach="state.conditions" t-as="condition" t-key="condition_index"
+                         class="o_sp_cf_condition">
+
+                        <button t-if="allowsMultipleConditions and state.conditions.length > 1"
+                                type="button"
+                                class="o_sp_cf_remove btn btn-sm"
+                                title="Remove condition"
+                                t-on-click="() => this.removeCondition(condition_index)">
+                            <i class="fa fa-times"/>
+                        </button>
+
+                        <!-- TEXT -->
+                        <t t-if="kind === 'text'">
+                            <select class="form-select form-select-sm o_sp_cf_field mb-1"
+                                    t-on-change="(ev) => this.setOperator(condition_index, ev.target.value)">
+                                <option t-foreach="textOperators" t-as="op" t-key="op.op"
+                                        t-att-value="op.op" t-att-selected="op.op === condition.operator"
+                                        t-esc="op.label"/>
+                            </select>
+                            <input type="text" class="form-control form-control-sm o_sp_cf_field"
+                                   placeholder="Value…" t-att-value="condition.value"
+                                   t-on-input="(ev) => this.setValue(condition_index, ev.target.value)"/>
+                        </t>
+
+                        <!-- NUMERIC -->
+                        <t t-elif="kind === 'numeric'">
+                            <div class="o_sp_cf_row">
+                                <select class="form-select form-select-sm o_sp_cf_operator_narrow"
+                                        t-on-change="(ev) => this.setOperator(condition_index, ev.target.value)">
+                                    <option t-foreach="numericOperators" t-as="op" t-key="op.op"
+                                            t-att-value="op.op" t-att-selected="op.op === condition.operator"
+                                            t-esc="op.label"/>
+                                </select>
+                                <input type="number" class="form-control form-control-sm o_sp_cf_grow"
+                                       placeholder="Value…"
+                                       t-att-value="condition.value"
+                                       t-on-input="(ev) => this.setValue(condition_index, ev.target.value)"/>
+                                <t t-if="condition.operator === 'between'">
+                                    <span class="o_sp_cf_sep">–</span>
+                                    <input type="number" class="form-control form-control-sm o_sp_cf_grow"
+                                           placeholder="Value…"
+                                           t-att-value="condition.value2"
+                                           t-on-input="(ev) => this.setValue2(condition_index, ev.target.value)"/>
+                                </t>
+                            </div>
+                        </t>
+
+                        <!-- DATE / DATETIME -->
+                        <t t-elif="kind === 'date'">
+                            <div class="o_sp_cf_row mb-1">
+                                <span class="o_sp_cf_range_label">From</span>
+                                <input t-att-type="props.field.type === 'datetime' ? 'datetime-local' : 'date'"
+                                       class="form-control form-control-sm o_sp_cf_grow"
+                                       t-att-value="condition.value"
+                                       t-on-input="(ev) => this.setValue(condition_index, ev.target.value)"/>
+                            </div>
+                            <div class="o_sp_cf_row">
+                                <span class="o_sp_cf_range_label">To</span>
+                                <input t-att-type="props.field.type === 'datetime' ? 'datetime-local' : 'date'"
+                                       class="form-control form-control-sm o_sp_cf_grow"
+                                       t-att-value="condition.value2"
+                                       t-on-input="(ev) => this.setValue2(condition_index, ev.target.value)"/>
+                            </div>
+                        </t>
+
+                        <!-- BOOLEAN -->
+                        <t t-elif="kind === 'boolean'">
+                            <div class="o_sp_cf_bool btn-group btn-group-sm w-100" role="group">
+                                <button type="button" class="btn"
+                                        t-att-class="condition.value === true ? 'o_sp_cf_bool_active' : 'btn-outline-secondary'"
+                                        t-on-click="() => this.setBoolean(condition_index, true)">Yes</button>
+                                <button type="button" class="btn"
+                                        t-att-class="condition.value === false ? 'o_sp_cf_bool_active' : 'btn-outline-secondary'"
+                                        t-on-click="() => this.setBoolean(condition_index, false)">No</button>
+                            </div>
+                        </t>
+
+                        <!-- SELECTION -->
+                        <t t-elif="kind === 'selection'">
+                            <div class="o_sp_cf_selection">
+                                <label t-foreach="selectionOptions" t-as="opt" t-key="opt[0]"
+                                       class="o_sp_cf_check">
+                                    <input type="checkbox" class="form-check-input mt-0"
+                                           t-att-checked="isSelected(condition_index, opt[0])"
+                                           t-on-change="() => this.toggleSelection(condition_index, opt[0])"/>
+                                    <span class="text-truncate" t-esc="opt[1]"/>
+                                </label>
+                            </div>
+                        </t>
+
+                        <!-- MANY2ONE / MANY2MANY -->
+                        <t t-elif="kind === 'many2one' or kind === 'many2many'">
+                            <Many2XFilterInput
+                                relation="props.field.relation"
+                                value="condition.value"
+                                update="(records) => this.updateRelation(condition_index, records)"/>
+                        </t>
+                    </div>
+                </div>
+
+                <button t-if="allowsMultipleConditions"
+                        type="button" class="o_sp_cf_add btn btn-sm"
+                        t-on-click="addCondition">
+                    <i class="fa fa-plus me-1"/> Add condition
+                </button>
+            </div>
+
+            <div class="o_sp_cf_footer">
+                <button type="button" class="o_sp_cf_clear btn btn-sm"
+                        t-on-click="clearAll">Clear all</button>
+                <button type="button" class="o_sp_cf_apply btn btn-sm"
+                        t-att-disabled="!hasActiveCondition"
+                        t-on-click="apply">Apply</button>
+            </div>
+        </div>
+    </t>
+
+</templates>
