@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="sp_pos_merge_table_orders.MergeOrdersButton"
+       t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('control-buttons-modal')]" position="inside">
+            <button t-if="this.spShowMergeOrders"
+                    class="o_sp_merge_orders_button"
+                    t-att-class="buttonClass"
+                    t-on-click="() => this.clickMergeOrders()">
+                <i class="fa fa-compress me-1" role="img" aria-label="Merge Orders" title="Merge Orders"/>
+                Merge Orders
+            </button>
+        </xpath>
+    </t>
+</templates>

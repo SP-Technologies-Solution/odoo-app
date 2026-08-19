@@ -1,0 +1,22 @@
+// Floor-plan badge flagging a table that holds a mergeable order.
+.sp-merge-badge {
+    min-width: 1.4rem;
+    height: 1.4rem;
+    margin: 0.15rem;
+    padding: 0 0.25rem;
+
+    .fa {
+        font-size: 0.8rem;
+    }
+}
+
+// Selection rows in the "Merge Orders" popup.
+.sp-merge-orders {
+    .sp-merge-order-row {
+        border-radius: 0.5rem;
+
+        &.active {
+            background-color: var(--o-selection-highlight, rgba(13, 110, 253, 0.1));
+        }
+    }
+}

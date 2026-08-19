@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="sp_pos_merge_table_orders.SpMergeOrdersPopup">
+        <Dialog title="props.title" size="'md'">
+            <div class="sp-merge-orders d-flex flex-column gap-2">
+                <p class="text-muted mb-1">
+                    Select the open orders you want to merge into the current order.
+                </p>
+                <t t-foreach="props.orders" t-as="order" t-key="order.uuid">
+                    <button
+                        type="button"
+                        class="sp-merge-order-row btn btn-outline-secondary d-flex align-items-center justify-content-between text-start p-3"
+                        t-att-class="{ 'active border-primary': isSelected(order) }"
+                        t-on-click="() => this.toggle(order)">
+                        <span class="d-flex align-items-center gap-3">
+                            <i class="fa fa-lg" role="img"
+                                t-att-class="isSelected(order) ? 'fa-check-square-o' : 'fa-square-o'"/>
+                            <span class="d-flex flex-column">
+                                <span class="fw-bolder" t-esc="tableLabel(order)"/>
+                                <small class="text-muted">
+                                    <t t-esc="lineCount(order)"/> line(s)
+                                </small>
+                            </span>
+                        </span>
+                        <span class="fw-bolder" t-esc="total(order)"/>
+                    </button>
+                </t>
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary btn-lg"
+                        t-att-disabled="!canConfirm"
+                        t-on-click="() => this.confirm()">
+                    Merge
+                </button>
+                <button class="btn btn-secondary btn-lg" t-on-click="() => this.props.close()">
+                    Cancel
+                </button>
+            </t>
+        </Dialog>
+    </t>
+</templates>
